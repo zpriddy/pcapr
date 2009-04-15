@@ -1,0 +1,261 @@
+/*
+ * Copyright (C) 2009 Mu Dynamics, Inc
+ * All rights reserved.
+ * http://www.opensource.org/licenses/bsd-license.php
+ * 
+ * http://www.mudynamics.com
+ * http://labs.mudynamics.com
+ * http://www.pcapr.net
+ */
+
+form#upload {
+	padding-bottom: 10px;
+}
+
+.sortby {
+	float: right;
+}
+
+.sortby ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	line-height: 1em;
+	text-indent: -3em;
+}
+
+.meta-proto {
+	text-decoration: none;	
+}
+
+.tag {
+	text-decoration: none;	
+	color: #D2691E;
+}
+
+.meta-proto:hover,.tag:hover {
+	background-color: #DDD;
+}
+
+.browser {
+	min-height: 150px;
+}
+
+.browser dd {
+	padding-bottom: 10px;
+}
+
+.browser dt {
+	padding-bottom: 5px;
+}
+
+.browser dt a {
+	font-size: larger;
+}
+
+.browser .description {
+	color: #af7b49;
+}
+
+li.p-comment {
+	margin-bottom: 16px;
+	padding-left: 10px;
+	border-left: 1px dotted #2E6AB1;
+}
+
+.splitter {
+	min-height: 500px;
+	margin-bottom: 10px;
+}
+
+.splitter #top {
+	background-color: #FAFAFA;
+	height: 100px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 10px;
+	min-height: 100px;
+	border: 1px solid #CCC !important;
+	-moz-border-radius-topleft: 8px;
+	-moz-border-radius-topright: 8px;
+}
+
+.splitter #bottom {
+	background-color: #FAFAFA;
+	overflow: auto;
+	height: 100px;
+	min-height: 100px;
+	border: 1px solid #CCC !important;
+	-moz-border-radius-bottomleft: 8px;
+	-moz-border-radius-bottomright: 8px;
+}
+
+.splitter #bottom pre {
+	margin: 0px;
+	padding: 10px;
+}
+
+.splitter .hsplitbar {
+	height: 6px;
+}
+
+.splitter .hsplitbar.active, .splitter .hsplitbar:hover {
+	background-color: #e88;
+}
+
+.pageNavigation {
+	margin-bottom: 10px;
+}
+
+.pageNavigation .summary {
+	font-size: 90%;
+}
+
+.pages {
+	font-size:85%;
+}
+
+.pages span {
+	background:#FFFFFF none repeat scroll 0%;
+	border:1px solid #FFFFFF;
+	padding: 1px;
+}
+
+.pages span.selected a {
+	background:#2E6AB1 none repeat scroll 0%;
+	border:1px solid #2E6AB1;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+
+.pages a {
+	border:1px solid #9AAFE5;
+	text-decoration:none;
+	padding: 1px 8px;	
+}
+
+.pages a:hover {
+	border-color:#2E6AB1;
+}
+
+.dragger {
+	cursor: move;
+	background: #2e6ab1;
+	color: #2e6ab1;
+	border: 1px solid #9aafe5;
+	font-size: 0.5em;
+}
+
+.pcap .titlecol {
+    width: 100%;
+}
+
+.pcap td {
+	padding: 2px 4px;
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+.packet #details {
+	cursor: pointer;
+	background: url('../image/collapsed.gif') no-repeat scroll -3px -3px;
+	text-decoration: none;
+	outline: none;
+}
+
+.packet #details.expanded {
+	background-image: url('../image/expanded.gif')
+}
+
+.packet #details.loading {
+	background-image: url('../image/throbber.gif');
+}
+
+.packet #details img {
+	width: 12px;
+	height: 12px;
+	vertical-align: middle;
+	border-color: transparent;
+}
+
+.details select {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+	white-space: nowrap;
+}
+
+.proto {
+	font-family: Monaco, Courier, monospace;
+	font-size: 11px;
+}
+
+.field {
+	margin-left: 15px;
+}
+
+.header a.toggle {
+	cursor: pointer;
+	background: url('../image/collapsed.gif') no-repeat scroll -3px -3px;
+	text-decoration: none;	
+	outline: none;
+}
+
+.header img {
+	width: 12px;
+	height: 12px;
+	vertical-align: middle;
+	border-color: transparent;
+}
+
+.header a.expanded {
+	background-image: url('../image/expanded.gif')	
+}
+
+.action_bar {
+	list-style: none;
+	padding-bottom: 10px;
+}
+
+.action_bar li { 
+	float: left; 
+}
+
+.action_bar li a { 
+	margin: 0pt; 
+	padding: 0pt 5px; 
+	background: transparent none repeat scroll 0% 0%; 
+	float: left; 
+	font-weight: bold; 
+}
+
+.action_bar a {
+	text-indent: 10px;
+}
+
+.action_bar a#upload {
+	background: url(../image/upload.png) no-repeat;
+}
+
+.action_bar a#download {
+	background: url(../image/download.png) no-repeat;	
+}
+
+.action_bar a#saveas {
+	background: url(../image/upload.png) no-repeat;
+}
+
+.action_bar a#delete {
+	background: url(../image/delete.png) no-repeat;
+}
+
+.about dl {
+    margin: 0px;
+}
+
+.cloud a {
+	line-height: 1em;
+	padding: 2px;
+}
+
