@@ -250,6 +250,10 @@ li.p-comment {
 	background: url(../image/delete.png) no-repeat;
 }
 
+.action_bar a#musl {
+	background: url(../image/icon-3.png) no-repeat;
+}
+
 .about dl {
     margin: 0px;
 }
