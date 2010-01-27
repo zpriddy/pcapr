@@ -1134,7 +1134,7 @@
                 this.target.css('height', h+'px');
             }
             else {
-                this._height = this.target.height();
+                this._height = this.target.offset().height;
             }
             if (!this.target.width()) {
                 var w;
@@ -1151,7 +1151,7 @@
                 this.target.css('width', w+'px');
             }
             else {
-                this._width = this.target.width();
+                this._width = this.target.offset().width;
             }
             
             this._plotDimensions.height = this._height;
