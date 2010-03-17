@@ -116,6 +116,7 @@ class Flow
             pcap = xtractr.get "api/packets/slice", :q => "pkt.flow:#{id}"
             ios.write pcap
         end
+        return self
     end
     
     def inspect # :nodoc:
