@@ -336,6 +336,7 @@ for the packets to span multiple pcaps, but xtractr makes it seamless.
             <span class="ruby-identifier">pcap</span> = <span class="ruby-identifier">xtractr</span>.<span class="ruby-identifier">get</span> <span class="ruby-value str">&quot;api/packets/slice&quot;</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;pkt.flow:#{id}&quot;</span>
             <span class="ruby-identifier">ios</span>.<span class="ruby-identifier">write</span> <span class="ruby-identifier">pcap</span>
         <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>

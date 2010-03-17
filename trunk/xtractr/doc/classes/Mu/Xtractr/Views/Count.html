@@ -179,7 +179,7 @@ Iterate over each packet that contains this field value.
             onclick="toggleCode('M000037-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000037-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 56</span>
+<span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 58</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_packet</span>(<span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) <span class="ruby-comment cmt"># :yields: packet</span>
             <span class="ruby-identifier">packets</span>(<span class="ruby-identifier">q</span>).<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
@@ -211,7 +211,7 @@ chaining.
             onclick="toggleCode('M000035-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000035-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 44</span>
+<span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 46</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">object</span>
             <span class="ruby-constant">Field</span><span class="ruby-operator">::</span><span class="ruby-constant">Value</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">xtractr</span>, <span class="ruby-value str">&quot;key&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">field</span>.<span class="ruby-identifier">name</span>, <span class="ruby-value str">&quot;value&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">value</span>
         <span class="ruby-keyword kw">end</span>
@@ -241,7 +241,7 @@ this field value.
             onclick="toggleCode('M000036-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000036-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 50</span>
+<span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 52</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packets</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
             <span class="ruby-identifier">object</span>.<span class="ruby-identifier">packets</span> <span class="ruby-identifier">q</span>
         <span class="ruby-keyword kw">end</span>
@@ -271,7 +271,7 @@ unique values of kfield. This is used for method chaining.
             onclick="toggleCode('M000038-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000038-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 64</span>
+<span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 66</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sum</span> <span class="ruby-identifier">kfield</span>, <span class="ruby-identifier">vfield</span>
             <span class="ruby-identifier">object</span>.<span class="ruby-identifier">sum</span> <span class="ruby-identifier">kfield</span>, <span class="ruby-identifier">vfield</span>
         <span class="ruby-keyword kw">end</span>
