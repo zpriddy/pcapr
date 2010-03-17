@@ -10,6 +10,8 @@
 
 module Mu
 class Xtractr
+# See http://labs.mudynamics.com/2009/04/03/interactive-couchdb/ for a quick
+# tutorial on how Map/Reduce works.
 class Views # :nodoc:
     # = Count
     # Count contains the results of doing a map/reduce on either flows or
