@@ -1,5 +1,5 @@
+#summary xtractr query language
 #labels Featured
-# summary xtractr query language
 
 = xtractr query language =
 
