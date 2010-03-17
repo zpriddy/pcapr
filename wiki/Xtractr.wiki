@@ -11,7 +11,9 @@
 Also see [XtractrSearch xtractr query language] for more information.
 
 = Ruby API =
-*xtractr* is fully restful and we are happy to release Ruby bindings for interacting with the *xtractr* server. To get started:
+*xtractr* is fully restful and we are happy to release Ruby bindings for interacting with the *xtractr* server. Please review the [http://pcapr.googlecode.com/svn/trunk/xtractr/doc/index.html rdoc documentation] for the methods/classes and how best to chain them together.
+
+To get started:
 
 {{{
  $ svn checkout http://pcapr.googlecode.com/svn/trunk/xtractr xtractr
