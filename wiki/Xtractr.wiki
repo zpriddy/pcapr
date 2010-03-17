@@ -8,6 +8,7 @@
  * [http://labs.mudynamics.com/2010/02/21/announcing-xtractr-unleash-the-power-of-packets/ Announcing xtractr]
  * [http://labs.mudynamics.com/2010/03/08/using-mapreduce-for-network-forensics-and-troubleshooting/ Using Map/Reduce for Network Forensics]
 
+Also see [XtractrSearch xtractr query language] for more information.
 
 = Ruby API =
 *xtractr* is fully restful and we are happy to release Ruby bindings for interacting with the *xtractr* server. To get started:
