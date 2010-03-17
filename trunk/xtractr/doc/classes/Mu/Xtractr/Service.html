@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Mu::Xtractr::Service</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Mu::Xtractr::Service</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/mu/xtractr/service_rb.html">
+                mu/xtractr/service.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="Service.html">Service</a></h1>
+<p>
+The <a href="Service.html">Service</a> class represents the
+Wireshark-assigned protocol that&#8216;s somewhat higher level than the IP
+protocol. You can get a list of all the unique services in your index
+through the xtractr&#8216;s methods:
+</p>
+<pre>
+ xtractr.services(/http/).each { |service| ... }
+ xtractr.services.each { |service| ... }
+</pre>
+<p>
+Some services like HTTP have counterparts in both <a
+href="Service.html#M000071">flows</a> and <a
+href="Service.html#M000070">packets</a>, while others like ARP (all non-IP,
+layer2 services) are only available in <a
+href="Service.html#M000070">packets</a>.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000068">clients</a>&nbsp;&nbsp;
+      <a href="#M000071">flows</a>&nbsp;&nbsp;
+      <a href="#M000070">packets</a>&nbsp;&nbsp;
+      <a href="#M000069">servers</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">name</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Return the name of the service
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
+
+        <div class="method-heading">
+          <a href="#M000068" class="method-signature">
+          <span class="method-name">clients</span><span class="method-args">(q=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get a unique list of <a href="Service.html#M000068">clients</a> for this
+service
+</p>
+<pre>
+ xtractr.service('http').clients
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000068-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000068-source">
+<pre>
+<span class="ruby-comment cmt"># File mu/xtractr/service.rb, line 36</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clients</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
+        <span class="ruby-identifier">_q</span> = <span class="ruby-node">&quot;flow.service:\&quot;#{name}\&quot;&quot;</span>
+        <span class="ruby-identifier">_q</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{q}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">q</span>
+        <span class="ruby-constant">Flows</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_q</span>).<span class="ruby-identifier">count</span>(<span class="ruby-value str">'flow.src'</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000071" class="method-detail">
+        <a name="M000071"></a>
+
+        <div class="method-heading">
+          <a href="#M000071" class="method-signature">
+          <span class="method-name">flows</span><span class="method-args">(q=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return an iterator that can yield all <a
+href="Service.html#M000071">flows</a> that have this service and matches
+the query
+</p>
+<pre>
+ xtractr.service(&quot;DNS&quot;).flows(&quot;AAAA&quot;).each { |flow| ... }
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000071-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000071-source">
+<pre>
+<span class="ruby-comment cmt"># File mu/xtractr/service.rb, line 62</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flows</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
+        <span class="ruby-identifier">_q</span> = <span class="ruby-node">&quot;flow.service:\&quot;#{name}\&quot;&quot;</span>
+        <span class="ruby-identifier">_q</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{q}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">q</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Flows</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_q</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000070" class="method-detail">
+        <a name="M000070"></a>
+
+        <div class="method-heading">
+          <a href="#M000070" class="method-signature">
+          <span class="method-name">packets</span><span class="method-args">(q=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return an iterator that can yield all <a
+href="Service.html#M000070">packets</a> that have this service and matches
+the query
+</p>
+<pre>
+ xtractr.service(&quot;DNS&quot;).packets(&quot;mu&quot;).each { |pkt| ... }
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000070-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000070-source">
+<pre>
+<span class="ruby-comment cmt"># File mu/xtractr/service.rb, line 53</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packets</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
+        <span class="ruby-identifier">_q</span> = <span class="ruby-node">&quot;pkt.service:\&quot;#{name}\&quot;&quot;</span>
+        <span class="ruby-identifier">_q</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{q}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">q</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Packets</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_q</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000069" class="method-detail">
+        <a name="M000069"></a>
+
+        <div class="method-heading">
+          <a href="#M000069" class="method-signature">
+          <span class="method-name">servers</span><span class="method-args">(q=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get a unique list of <a href="Service.html#M000069">servers</a> for this
+service
+</p>
+<pre>
+ xtractr.service('http').servers
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000069-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000069-source">
+<pre>
+<span class="ruby-comment cmt"># File mu/xtractr/service.rb, line 44</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">servers</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
+        <span class="ruby-identifier">_q</span> = <span class="ruby-node">&quot;flow.service:\&quot;#{name}\&quot;&quot;</span>
+        <span class="ruby-identifier">_q</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{q}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">q</span>
+        <span class="ruby-constant">Flows</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_q</span>).<span class="ruby-identifier">count</span>(<span class="ruby-value str">'flow.dst'</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
