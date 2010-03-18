@@ -161,7 +161,7 @@ href="Host.html#M000054">clients</a>.
             onclick="toggleCode('M000054-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000054-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/host.rb, line 30</span>
+<span class="ruby-comment cmt"># File mu/xtractr/host.rb, line 34</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clients</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-identifier">_q</span> = <span class="ruby-identifier">role2q</span> <span class="ruby-identifier">:server</span>, <span class="ruby-value str">'flow'</span>, <span class="ruby-identifier">q</span>
         <span class="ruby-constant">Flows</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_q</span>).<span class="ruby-identifier">count</span>(<span class="ruby-value str">'flow.src'</span>)
@@ -193,7 +193,7 @@ role.
             onclick="toggleCode('M000057-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000057-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/host.rb, line 53</span>
+<span class="ruby-comment cmt"># File mu/xtractr/host.rb, line 57</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flows</span> <span class="ruby-identifier">role</span> =<span class="ruby-identifier">:any</span>, <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-identifier">_q</span> = <span class="ruby-identifier">role2q</span> <span class="ruby-identifier">role</span>, <span class="ruby-value str">'flow'</span>, <span class="ruby-identifier">q</span>
         <span class="ruby-constant">Flows</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_q</span>)
@@ -225,7 +225,7 @@ specified role.
             onclick="toggleCode('M000058-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000058-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/host.rb, line 61</span>
+<span class="ruby-comment cmt"># File mu/xtractr/host.rb, line 65</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packets</span> <span class="ruby-identifier">role</span> =<span class="ruby-identifier">:any</span>, <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-identifier">_q</span> = <span class="ruby-identifier">role2q</span> <span class="ruby-identifier">role</span>, <span class="ruby-value str">'pkt'</span>, <span class="ruby-identifier">q</span>
         <span class="ruby-constant">Packets</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_q</span>)
@@ -256,7 +256,7 @@ href="Host.html#M000055">servers</a>.
             onclick="toggleCode('M000055-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000055-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/host.rb, line 37</span>
+<span class="ruby-comment cmt"># File mu/xtractr/host.rb, line 41</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">servers</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-identifier">_q</span> = <span class="ruby-identifier">role2q</span> <span class="ruby-identifier">:client</span>, <span class="ruby-value str">'flow'</span>, <span class="ruby-identifier">q</span>
         <span class="ruby-constant">Flows</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_q</span>).<span class="ruby-identifier">count</span>(<span class="ruby-value str">'flow.dst'</span>)
@@ -288,7 +288,7 @@ href="Host.html#M000056">services</a>. <em>role</em> can be one of :any,
             onclick="toggleCode('M000056-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000056-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/host.rb, line 45</span>
+<span class="ruby-comment cmt"># File mu/xtractr/host.rb, line 49</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">services</span> <span class="ruby-identifier">role</span> =<span class="ruby-identifier">:any</span>, <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-identifier">_q</span> = <span class="ruby-identifier">role2q</span> <span class="ruby-identifier">role</span>, <span class="ruby-value str">'flow'</span>, <span class="ruby-identifier">q</span>
         <span class="ruby-constant">Flows</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_q</span>).<span class="ruby-identifier">count</span>(<span class="ruby-value str">'flow.service'</span>)

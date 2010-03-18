@@ -164,7 +164,7 @@ href="Value.html#M000066">packets</a> that matched the query.
             onclick="toggleCode('M000068-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000068-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 79</span>
+<span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 83</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span> <span class="ruby-identifier">_field</span>
             <span class="ruby-identifier">which</span> = <span class="ruby-identifier">field</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^flow\./</span> <span class="ruby-operator">?</span> <span class="ruby-value str">'flows'</span> <span class="ruby-operator">:</span> <span class="ruby-value str">'packets'</span>
             <span class="ruby-constant">Views</span>.<span class="ruby-identifier">count</span> <span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">_field</span>, <span class="ruby-node">&quot;/api/#{which}/report&quot;</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">q</span>
@@ -192,7 +192,7 @@ convenience function used primiarily in method chaining.
             onclick="toggleCode('M000067-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000067-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 71</span>
+<span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 75</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_packet</span>(<span class="ruby-identifier">_q</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) <span class="ruby-comment cmt"># :yields: packet</span>
             <span class="ruby-identifier">packets</span>(<span class="ruby-identifier">_q</span>).<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
@@ -226,7 +226,7 @@ href="Value.html">Field::Value</a>.
             onclick="toggleCode('M000066-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000066-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 63</span>
+<span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 67</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packets</span> <span class="ruby-identifier">_q</span>=<span class="ruby-keyword kw">nil</span>
             <span class="ruby-identifier">q2</span> = <span class="ruby-identifier">q</span>
             <span class="ruby-identifier">q2</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{_q}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">_q</span>
@@ -258,7 +258,7 @@ kfield.
             onclick="toggleCode('M000069-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000069-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 87</span>
+<span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 91</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sum</span> <span class="ruby-identifier">kfield</span>, <span class="ruby-identifier">vfield</span>
             <span class="ruby-identifier">which</span> = <span class="ruby-identifier">field</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^flow\./</span> <span class="ruby-operator">?</span> <span class="ruby-value str">'flows'</span> <span class="ruby-operator">:</span> <span class="ruby-value str">'packets'</span>
             <span class="ruby-constant">Views</span>.<span class="ruby-identifier">sum</span> <span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">kfield</span>, <span class="ruby-identifier">vfield</span>, <span class="ruby-node">&quot;/api/#{which}/report&quot;</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">q</span>

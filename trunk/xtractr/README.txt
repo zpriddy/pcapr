@@ -1,12 +1,16 @@
 # "THE BEER-WARE LICENSE" (Revision 42):
-# Mu Dynamics wrote this file. As long as you retain this notice you can do 
-# whatever you want with this stuff. If we meet some day, and you think this 
-# stuff is worth it, you can buy us a beer in return. 
+# Mu[http://www.mudynamics.com] wrote this file. As long as you retain this 
+# notice you can do whatever you want with this stuff. If we meet some day, 
+# and you think this stuff is worth it, you can buy us a beer in return. 
 #
-# http://www.pcapr.net
-# http://groups.google.com/group/pcapr-forum
-# http://labs.mudynamics.com
-# http://twitter.com/pcapr
+# All about pcapr
+# * http://www.pcapr.net
+# * http://groups.google.com/group/pcapr-forum
+# * http://twitter.com/pcapr
+#
+# Mu Dynamics
+# * http://www.mudynamics.com
+# * http://labs.mudynamics.com
 
 This gem is Ruby front-end to the RESTful API that http://www.pcapr.net/xtractr
 provides. We primarily use this for unit testing xtractr's API, but on 

@@ -307,7 +307,7 @@ xtractr binary running in browse mode.
             onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000001-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 87</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 91</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">address</span>=<span class="ruby-value str">'localhost'</span>, <span class="ruby-identifier">port</span>=<span class="ruby-value">8080</span>
         <span class="ruby-ivar">@address</span> = <span class="ruby-identifier">address</span>
         <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>
@@ -348,7 +348,7 @@ set of pcaps in the index.
             onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000002-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 101</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 105</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">about</span>
         <span class="ruby-ivar">@about</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">About</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">json</span>(<span class="ruby-value str">'api/about'</span>)
     <span class="ruby-keyword kw">end</span>
@@ -377,7 +377,7 @@ Fetch a <a href="Xtractr.html#M000004">field</a> of the given name.
             onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000004-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 119</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 123</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">field</span> <span class="ruby-identifier">name</span>
         <span class="ruby-identifier">obj</span> = <span class="ruby-identifier">fields</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span> }
         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Unknown field #{name}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">obj</span>
@@ -412,7 +412,7 @@ The <a href="Xtractr.html#M000003">fields</a> are only available if the
             onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000003-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 110</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 114</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fields</span> <span class="ruby-identifier">regex</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-identifier">regex</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">regex</span>, <span class="ruby-constant">Regexp</span><span class="ruby-operator">::</span><span class="ruby-constant">IGNORECASE</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">regex</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
         <span class="ruby-identifier">result</span> = (<span class="ruby-ivar">@fields</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">json</span> <span class="ruby-value str">'api/fields'</span>)
@@ -445,7 +445,7 @@ index.
             onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000010-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 185</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 189</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flow</span> <span class="ruby-identifier">id</span>
         <span class="ruby-identifier">result</span> = <span class="ruby-identifier">json</span> <span class="ruby-value str">&quot;api/flows&quot;</span>, <span class="ruby-identifier">:start</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">:limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>
         <span class="ruby-identifier">rows</span> = <span class="ruby-identifier">result</span>[<span class="ruby-value str">'rows'</span>]
@@ -482,7 +482,7 @@ href="Xtractr.html#M000009">flows</a> that match all of those ids.
             onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000009-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 173</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 177</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flows</span>(<span class="ruby-identifier">q</span>=<span class="ruby-value str">'*'</span>) <span class="ruby-comment cmt"># :yields: flow</span>
         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Range</span>
             <span class="ruby-identifier">first</span> = <span class="ruby-identifier">q</span>.<span class="ruby-identifier">first</span>
@@ -517,7 +517,7 @@ Fetch a <a href="Xtractr.html#M000006">host</a> of the given address.
             onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000006-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 140</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 144</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">host</span> <span class="ruby-identifier">address</span>
         <span class="ruby-identifier">obj</span> = <span class="ruby-identifier">hosts</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>.<span class="ruby-identifier">address</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">address</span> }
         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Unknown host #{address}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">obj</span>
@@ -552,7 +552,7 @@ href="Xtractr.html#M000005">hosts</a> list.
             onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000005-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 130</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 134</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hosts</span> <span class="ruby-identifier">regex</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-identifier">regex</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">regex</span>, <span class="ruby-constant">Regexp</span><span class="ruby-operator">::</span><span class="ruby-constant">IGNORECASE</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">regex</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
         <span class="ruby-identifier">result</span> = (<span class="ruby-ivar">@hosts</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">json</span> <span class="ruby-value str">'api/hosts'</span>)
@@ -586,7 +586,7 @@ index.
             onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000012-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 210</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 214</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packet</span> <span class="ruby-identifier">id</span>
         <span class="ruby-identifier">result</span> = <span class="ruby-identifier">xtractr</span>.<span class="ruby-identifier">json</span> <span class="ruby-value str">&quot;api/packets&quot;</span>, <span class="ruby-identifier">:start</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">:limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>
         <span class="ruby-identifier">rows</span> = <span class="ruby-identifier">result</span>[<span class="ruby-value str">'rows'</span>]
@@ -623,7 +623,7 @@ href="Xtractr.html#M000011">packets</a> that match all of those ids.
             onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000011-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 198</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 202</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packets</span>(<span class="ruby-identifier">q</span>=<span class="ruby-value str">'*'</span>) <span class="ruby-comment cmt"># :yields: packet</span>
         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Range</span>
             <span class="ruby-identifier">first</span> = <span class="ruby-identifier">q</span>.<span class="ruby-identifier">first</span>
@@ -658,7 +658,7 @@ Fetch a <a href="Xtractr.html#M000008">service</a> of the given name.
             onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000008-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 161</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 165</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">service</span> <span class="ruby-identifier">name</span>
         <span class="ruby-identifier">obj</span> = <span class="ruby-identifier">services</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span> }
         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Unknown service #{name}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">obj</span>
@@ -693,7 +693,7 @@ href="Xtractr.html#M000007">services</a> lists.
             onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000007-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 151</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 155</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">services</span> <span class="ruby-identifier">regex</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-identifier">regex</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">regex</span>, <span class="ruby-constant">Regexp</span><span class="ruby-operator">::</span><span class="ruby-constant">IGNORECASE</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">regex</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
         <span class="ruby-identifier">result</span> = (<span class="ruby-ivar">@services</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">json</span> <span class="ruby-value str">'api/services'</span>)
