@@ -9,7 +9,7 @@
 For the packets, xtractr effectively builds an inverted index (terms.db on the file system). Each value for the field (like ip.ttl or http.user.agent) contains a set of tokenized _terms_ which then map to which packet of which pcap contained that term. So the basis for querying are fields and terms. In addition to all the tshark fields, xtractr adds its own which are documented here.
 
 === Packet fields ===
-*xtractr* store most of the tshark fields into the Ferret index. In addition here are the packet fields created by xtractr:
+*xtractr* stores most of the tshark fields into the Ferret index. In addition here are the packet fields created by xtractr:
 
  * `pkt.id` - the unique ID of the packet
  * `pkt.pcap` - the unique ID of the pcap in which this packet was found
