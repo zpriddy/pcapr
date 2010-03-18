@@ -43,7 +43,7 @@ All searches on packets can include both the `pkt.*` fields in addition to the v
  * `flow.cmsgs` - the number of logical requests sent by the client
  * `flow.smsgs` - the number of logical responses sent by the server
  * `flow.title` - normally the title of the first packet of the flow
- * `flow.label` - use-defined labels associated with the flow
+ * `flow.label` - user-defined labels associated with the flow
 
 Currently searches on flows cannot include the packet and tshark fields, though that's something we are looking into.
 
