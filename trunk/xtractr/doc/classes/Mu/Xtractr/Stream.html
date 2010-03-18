@@ -55,6 +55,10 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
+                <a href="../../../files/mu/xtractr/stream/http_rb.html">
+                mu/xtractr/stream/http.rb
+                </a>
+        <br />
                 <a href="../../../files/mu/xtractr/stream_rb.html">
                 mu/xtractr/stream.rb
                 </a>
@@ -86,11 +90,21 @@ multiple packets across multiple pcaps). A given message in the stream is
 potentially stitched together from multiple packets. Streams form the basis
 of doing content-analysis with xtractr. xtractr does all the work of
 reassembling the packets and pulling out the appropriate payload from <a
-href="Stream.html#M000039">each</a> of the packets.
+href="Stream.html#M000041">each</a> of the packets.
 </p>
 <pre>
  xtractr.flows('flow.service:http').first.stream.find do |message|
      m =~ /xml/
+ end
+</pre>
+<p>
+Each stream also has a set of content processors that are invoked at
+creation time which pull out attachments, images, etc from the reassembled
+stream.
+</p>
+<pre>
+ xtractr.flows('flow.service:http').first.stream.contents.each do |content|
+     content.save if content.type == 'image/jpeg'
  end
 </pre>
 
@@ -103,7 +117,7 @@ href="Stream.html#M000039">each</a> of the packets.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000039">each</a>&nbsp;&nbsp;
+      <a href="#M000041">each</a>&nbsp;&nbsp;
       <a href="#M000040">each_message</a>&nbsp;&nbsp;
       </div>
     </div>
@@ -138,6 +152,14 @@ href="Stream.html#M000039">each</a> of the packets.
       <div class="name-list">
         <table>
         <tr class="top-aligned-row context-row">
+          <td class="context-item-name">contents</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Return a list of extracted content from the messages.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
           <td class="context-item-name">flow</td>
           <td class="context-item-value">&nbsp;[R]&nbsp;</td>
           <td class="context-item-desc">
@@ -153,11 +175,6 @@ Return a list of Messages in this stream.
 
 </td>
         </tr>
-        <tr class="top-aligned-row context-row">
-          <td class="context-item-name">xtractr</td>
-          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
-          <td class="context-item-desc"></td>
-        </tr>
         </table>
       </div>
     </div>
@@ -168,30 +185,17 @@ Return a list of Messages in this stream.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000039" class="method-detail">
-        <a name="M000039"></a>
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
 
         <div class="method-heading">
-          <a href="#M000039" class="method-signature">
           <span class="method-name">each</span><span class="method-args">(&amp;blk)</span>
-          </a>
         </div>
       
         <div class="method-description">
           <p>
-Iterate over <a href="Stream.html#M000039">each</a> message in this stream
+Alias for <a href="Stream.html#M000040">each_message</a>
 </p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000039-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000039-source">
-<pre>
-<span class="ruby-comment cmt"># File mu/xtractr/stream.rb, line 82</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>
-        <span class="ruby-identifier">messages</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
-        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
-    <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
         </div>
       </div>
 
@@ -199,13 +203,26 @@ Iterate over <a href="Stream.html#M000039">each</a> message in this stream
         <a name="M000040"></a>
 
         <div class="method-heading">
+          <a href="#M000040" class="method-signature">
           <span class="method-name">each_message</span><span class="method-args">(&amp;blk)</span>
+          </a>
         </div>
       
         <div class="method-description">
           <p>
-Alias for <a href="Stream.html#M000039">each</a>
+Iterate over <a href="Stream.html#M000041">each</a> message in this stream
 </p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000040-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000040-source">
+<pre>
+<span class="ruby-comment cmt"># File mu/xtractr/stream.rb, line 114</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_message</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>
+        <span class="ruby-identifier">messages</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
         </div>
       </div>
 

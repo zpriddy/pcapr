@@ -54,6 +54,12 @@ class Test < Test::Unit::TestCase
         assert_equal(flow, v)
     end
     
+    def test_contents
+        flow = xtractr.flows('flow.service:HTTP').first
+        contents = flow.contents
+        assert_equal(1, contents.size)
+    end
+    
     def test_inspect
         assert_nothing_raised { xtractr.flows.inspect }
     end

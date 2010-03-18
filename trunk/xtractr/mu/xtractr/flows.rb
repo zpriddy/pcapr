@@ -34,7 +34,7 @@ class Flows
     # better to use this with a fine-grained query instead of flows.to_a
     # because it's going to try and load *all* flows from the index.
     #  xtractr.flows("flow.src:192.168.1.1").each { |flow| ... }
-    def each() # :yields: flow
+    def each_flow() # :yields: flow
         _opts = @opts.dup
         _opts[:start] ||= 1
         _opts[:limit] ||= MAX_PAGE_SIZE
@@ -108,7 +108,7 @@ class Flows
         "#<flows:#{@opts[:q]}>"
     end
         
-    alias_method :each_flow, :each
+    alias_method :each, :each_flow
 end
 end # Xtractr
 end # Mu

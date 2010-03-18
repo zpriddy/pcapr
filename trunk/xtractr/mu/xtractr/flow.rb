@@ -93,7 +93,7 @@ class Flow
     
     # Iterate over each packet in this flow.
     #  flow.each { |pkt| ... }
-    def each(&blk) # :yields: packet
+    def each_packet(&blk) # :yields: packet
         @iterator.each(&blk)
         return self
     end
@@ -105,6 +105,15 @@ class Flow
     def stream
         result = xtractr.json "api/flow/#{id}/stream"
         return Stream.new(xtractr, self, result)
+    end
+    
+    # A convenience method to fetch the stream for this flow, extract the
+    # content and then return an array of contents.
+    #  xtractr.flows('flow.service:HTTP favicon.ico').each do |flow|
+    #      flow.contents.each { |c| c.save }
+    #  end
+    def contents
+        stream.contents
     end
     
     # Stich together a pcap made up of all packets containing this flow and
@@ -123,7 +132,7 @@ class Flow
         "#<flow:#{id} #{service.name} #{src.address}:#{sport} > #{dst.address}:#{dport} #{title}"
     end
     
-    alias_method :each_packet, :each
+    alias_method :each, :each_packet
 end
 end # Xtractr
 end # Mu

@@ -47,7 +47,7 @@ class Packets
     #  xtractr.packets("pkt.src:192.168.1.1").each do |pkt|
     #      ...
     #  end
-    def each() # :yields: packet
+    def each_packet() # :yields: packet
         _opts = @opts.dup
         _opts[:start] ||= 1
         _opts[:limit] ||= MAX_PAGE_SIZE
@@ -112,7 +112,7 @@ class Packets
         "#<packets:#{@opts[:q]}>"
     end
         
-    alias_method :each_packet, :each
+    alias_method :each, :each_packet
 end
 end # Xtractr
 end # Mu

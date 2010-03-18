@@ -67,7 +67,7 @@ class Packet
         return nil if @flow_id.zero?
         @flow ||= xtractr.flow @flow_id
     end
-    
+        
     # Fetch the actual packet data from the index. The return value is a
     # String (that might contain null characters).
     #  xtractr.packets('index.html').first.bytes
@@ -91,7 +91,7 @@ class Packet
     # Iterate over each Field::Value in the packet. The various packet fields
     # are only available if the indexing was done with <em>--mode forensics</em>.
     #   packet.each('ip.ttl') { |fv| ... }
-    def each(regex=nil) # :yields: value
+    def each_field(regex=nil) # :yields: value
         regex = Regexp.new(regex) if regex.is_a? String
         result = xtractr.json "/api/packet/#{id}/fields"
         rows = result['rows']
@@ -126,7 +126,7 @@ class Packet
         "#<pkt:#{id} #{src.address} > #{dst.address} #{service.name} #{title}"
     end
     
-    alias_method :each_field, :each
+    alias_method :each, :each_field
     alias_method :fields, :entries
     alias_method :field, :[]
 end

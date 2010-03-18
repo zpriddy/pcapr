@@ -112,8 +112,8 @@ into a new pcap.
 
       <div class="name-list">
       <a href="#M000015">count</a>&nbsp;&nbsp;
-      <a href="#M000013">each</a>&nbsp;&nbsp;
-      <a href="#M000019">each_packet</a>&nbsp;&nbsp;
+      <a href="#M000019">each</a>&nbsp;&nbsp;
+      <a href="#M000013">each_packet</a>&nbsp;&nbsp;
       <a href="#M000014">first</a>&nbsp;&nbsp;
       <a href="#M000018">save</a>&nbsp;&nbsp;
       <a href="#M000017">sum</a>&nbsp;&nbsp;
@@ -176,18 +176,32 @@ field amongst all the packets that matched the query.
         </div>
       </div>
 
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <span class="method-name">each</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Packets.html#M000013">each_packet</a>
+</p>
+        </div>
+      </div>
+
       <div id="method-M000013" class="method-detail">
         <a name="M000013"></a>
 
         <div class="method-heading">
           <a href="#M000013" class="method-signature">
-          <span class="method-name">each</span><span class="method-args">() {|packet| ...}</span>
+          <span class="method-name">each_packet</span><span class="method-args">() {|packet| ...}</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Iterate over <a href="Packets.html#M000013">each</a> packet that matches
+Iterate over <a href="Packets.html#M000019">each</a> packet that matches
 the search criteria. It&#8216;s always better to use this with a
 fine-grained query instead of packets.to_a because it&#8216;s going to try
 and load <em>all</em> packets from the index.
@@ -202,7 +216,7 @@ and load <em>all</em> packets from the index.
           <div class="method-source-code" id="M000013-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/packets.rb, line 50</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>() <span class="ruby-comment cmt"># :yields: packet</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_packet</span>() <span class="ruby-comment cmt"># :yields: packet</span>
         <span class="ruby-identifier">_opts</span> = <span class="ruby-ivar">@opts</span>.<span class="ruby-identifier">dup</span>
         <span class="ruby-identifier">_opts</span>[<span class="ruby-identifier">:start</span>] <span class="ruby-operator">||=</span> <span class="ruby-value">1</span>
         <span class="ruby-identifier">_opts</span>[<span class="ruby-identifier">:limit</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">MAX_PAGE_SIZE</span>
@@ -224,20 +238,6 @@ and load <em>all</em> packets from the index.
     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
-        </div>
-      </div>
-
-      <div id="method-M000019" class="method-detail">
-        <a name="M000019"></a>
-
-        <div class="method-heading">
-          <span class="method-name">each_packet</span><span class="method-args">()</span>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Alias for <a href="Packets.html#M000013">each</a>
-</p>
         </div>
       </div>
 
