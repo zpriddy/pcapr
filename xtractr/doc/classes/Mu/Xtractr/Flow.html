@@ -111,10 +111,11 @@ logical messages that were exchanged. For example:
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000048">each</a>&nbsp;&nbsp;
-      <a href="#M000051">each_packet</a>&nbsp;&nbsp;
-      <a href="#M000050">save</a>&nbsp;&nbsp;
-      <a href="#M000049">stream</a>&nbsp;&nbsp;
+      <a href="#M000051">contents</a>&nbsp;&nbsp;
+      <a href="#M000053">each</a>&nbsp;&nbsp;
+      <a href="#M000049">each_packet</a>&nbsp;&nbsp;
+      <a href="#M000052">save</a>&nbsp;&nbsp;
+      <a href="#M000050">stream</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -264,28 +265,75 @@ The title of the flow.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000048" class="method-detail">
-        <a name="M000048"></a>
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
 
         <div class="method-heading">
-          <a href="#M000048" class="method-signature">
-          <span class="method-name">each</span><span class="method-args">() {|packet| ...}</span>
+          <a href="#M000051" class="method-signature">
+          <span class="method-name">contents</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Iterate over <a href="Flow.html#M000048">each</a> packet in this flow.
+A convenience method to fetch the <a href="Flow.html#M000050">stream</a>
+for this flow, extract the content and then return an array of <a
+href="Flow.html#M000051">contents</a>.
+</p>
+<pre>
+ xtractr.flows('flow.service:HTTP favicon.ico').each do |flow|
+     flow.contents.each { |c| c.save }
+ end
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000051-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000051-source">
+<pre>
+<span class="ruby-comment cmt"># File mu/xtractr/flow.rb, line 115</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">contents</span>
+        <span class="ruby-identifier">stream</span>.<span class="ruby-identifier">contents</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000053" class="method-detail">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+          <span class="method-name">each</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Flow.html#M000049">each_packet</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+          <a href="#M000049" class="method-signature">
+          <span class="method-name">each_packet</span><span class="method-args">() {|packet| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Iterate over <a href="Flow.html#M000053">each</a> packet in this flow.
 </p>
 <pre>
  flow.each { |pkt| ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000048-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000048-source">
+            onclick="toggleCode('M000049-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000049-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/flow.rb, line 96</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) <span class="ruby-comment cmt"># :yields: packet</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_packet</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) <span class="ruby-comment cmt"># :yields: packet</span>
         <span class="ruby-ivar">@iterator</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
     <span class="ruby-keyword kw">end</span>
@@ -294,25 +342,11 @@ Iterate over <a href="Flow.html#M000048">each</a> packet in this flow.
         </div>
       </div>
 
-      <div id="method-M000051" class="method-detail">
-        <a name="M000051"></a>
+      <div id="method-M000052" class="method-detail">
+        <a name="M000052"></a>
 
         <div class="method-heading">
-          <span class="method-name">each_packet</span><span class="method-args">()</span>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Alias for <a href="Flow.html#M000048">each</a>
-</p>
-        </div>
-      </div>
-
-      <div id="method-M000050" class="method-detail">
-        <a name="M000050"></a>
-
-        <div class="method-heading">
-          <a href="#M000050" class="method-signature">
+          <a href="#M000052" class="method-signature">
           <span class="method-name">save</span><span class="method-args">(filename)</span>
           </a>
         </div>
@@ -320,17 +354,17 @@ Alias for <a href="Flow.html#M000048">each</a>
         <div class="method-description">
           <p>
 Stich together a pcap made up of all packets containing this flow and <a
-href="Flow.html#M000050">save</a> it to the filename. It&#8216;s possible
+href="Flow.html#M000052">save</a> it to the filename. It&#8216;s possible
 for the packets to span multiple pcaps, but xtractr makes it seamless.
 </p>
 <pre>
  flow.save(&quot;foo.pcap&quot;)
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000050-source">
+            onclick="toggleCode('M000052-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000052-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr/flow.rb, line 114</span>
+<span class="ruby-comment cmt"># File mu/xtractr/flow.rb, line 123</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">save</span> <span class="ruby-identifier">filename</span>
         <span class="ruby-identifier">open</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-value str">&quot;w&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ios</span><span class="ruby-operator">|</span>
             <span class="ruby-identifier">pcap</span> = <span class="ruby-identifier">xtractr</span>.<span class="ruby-identifier">get</span> <span class="ruby-value str">&quot;api/packets/slice&quot;</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;pkt.flow:#{id}&quot;</span>
@@ -343,28 +377,28 @@ for the packets to span multiple pcaps, but xtractr makes it seamless.
         </div>
       </div>
 
-      <div id="method-M000049" class="method-detail">
-        <a name="M000049"></a>
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
 
         <div class="method-heading">
-          <a href="#M000049" class="method-signature">
+          <a href="#M000050" class="method-signature">
           <span class="method-name">stream</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Reassemble the TCP <a href="Flow.html#M000049">stream</a> for this flow
+Reassemble the TCP <a href="Flow.html#M000050">stream</a> for this flow
 (assuming it&#8216;s a TCP flow) and return the <a
-href="Flow.html#M000049">stream</a>. This is the basis for doing content
+href="Flow.html#M000050">stream</a>. This is the basis for doing content
 extraction from packets even if the packets span multiple pcaps.
 </p>
 <pre>
  xtractr.service('HTTP').flows.first.stream
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000049-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000049-source">
+            onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000050-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/flow.rb, line 105</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stream</span>

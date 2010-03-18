@@ -103,8 +103,8 @@ of those methods across all of the <a href="Term.html#M000021">packets</a>.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000020">each</a>&nbsp;&nbsp;
-      <a href="#M000022">each_packet</a>&nbsp;&nbsp;
+      <a href="#M000022">each</a>&nbsp;&nbsp;
+      <a href="#M000020">each_packet</a>&nbsp;&nbsp;
       <a href="#M000021">packets</a>&nbsp;&nbsp;
       </div>
     </div>
@@ -166,18 +166,32 @@ Return the value of this term.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <span class="method-name">each</span><span class="method-args">(q=nil)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Term.html#M000020">each_packet</a>
+</p>
+        </div>
+      </div>
+
       <div id="method-M000020" class="method-detail">
         <a name="M000020"></a>
 
         <div class="method-heading">
           <a href="#M000020" class="method-signature">
-          <span class="method-name">each</span><span class="method-args">(q=nil) {|packet| ...}</span>
+          <span class="method-name">each_packet</span><span class="method-args">(q=nil) {|packet| ...}</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch <a href="Term.html#M000020">each</a> packet from the index that has
+Fetch <a href="Term.html#M000022">each</a> packet from the index that has
 this term in this field. If the optional q is specified, the search query
 is AND&#8216;d with the term&#8216;s own search query
 </p>
@@ -189,27 +203,13 @@ is AND&#8216;d with the term&#8216;s own search query
           <div class="method-source-code" id="M000020-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/term.rb, line 48</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) <span class="ruby-comment cmt"># :yields: packet</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_packet</span>(<span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) <span class="ruby-comment cmt"># :yields: packet</span>
         <span class="ruby-identifier">_q</span> = <span class="ruby-node">&quot;#{field.name}:#{value}&quot;</span>
         <span class="ruby-identifier">_q</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{q}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">q</span>
         <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Packets</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xtractr</span>, <span class="ruby-identifier">:q</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_q</span>).<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
-        </div>
-      </div>
-
-      <div id="method-M000022" class="method-detail">
-        <a name="M000022"></a>
-
-        <div class="method-heading">
-          <span class="method-name">each_packet</span><span class="method-args">(q=nil)</span>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Alias for <a href="Term.html#M000020">each</a>
-</p>
         </div>
       </div>
 

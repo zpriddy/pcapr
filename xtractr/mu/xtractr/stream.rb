@@ -21,16 +21,38 @@ class Xtractr
 #  xtractr.flows('flow.service:http').first.stream.find do |message|
 #      m =~ /xml/
 #  end
+#
+# Each stream also has a set of content processors that are invoked at 
+# creation time which pull out attachments, images, etc from the reassembled
+# stream.
+#
+#  xtractr.flows('flow.service:http').first.stream.contents.each do |content|
+#      content.save if content.type == 'image/jpeg'
+#  end
 class Stream
     include Enumerable
     
-    attr_reader :xtractr # :nodoc
+    # A list of stream processors that can pull out content from messages
+    class Processor # :nodoc:
+        def self.inherited klass
+            @processors ||= [] << klass
+        end
+        
+        def self.processors
+            @processors ||= []
+        end
+    end
+    
+    attr_reader :xtractr # :nodoc:
     
     # Return the flow that this stream represents.
     attr_reader :flow
     
     # Return a list of Messages in this stream.
     attr_reader :messages
+    
+    # Return a list of extracted content from the messages.
+    attr_reader :contents
     
     # = Message
     # Represents a single logical TCP message that has been potentially
@@ -68,18 +90,28 @@ class Stream
         @xtractr  = xtractr
         @flow     = flow
         @messages = []
+        @contents = []
         
         json['packets'].each do |pkt|
             bytes = (pkt['b'] || []).map { |b| b.chr }.join('')
-            if messages.empty? or messages.last.dir != pkt['d']
-                messages << Message.new(self, messages.size, pkt['d'], bytes)
+            if messages.empty? or messages[-1].dir != pkt['d']
+                messages << Message.new(self, messages.size, pkt['d'], '')
             end
-            messages.last.bytes << bytes
+            messages[-1].bytes << bytes
+        end
+        
+        # Run the stream/messages through each registered processor to pull
+        # out attachments, files, etc
+        Processor.processors.each do |processor|
+            if processor.matches? self
+                processor.extract self
+                break
+            end
         end
     end
     
     # Iterate over each message in this stream
-    def each &blk
+    def each_message &blk
         messages.each(&blk)
         return self
     end
@@ -88,7 +120,9 @@ class Stream
         return "#<stream:#{flow.id} ##{messages.size} messages>"
     end
     
-    alias_method :each_message, :each
+    alias_method :each, :each_message
 end
 end # Xtractr
 end # Mu
+
+require 'mu/xtractr/stream/http'

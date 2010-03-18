@@ -104,7 +104,7 @@ class Field
     # from the specified term.
     #  field.each { |term| ... }
     #  field.each('mozilla') { |term| ... }
-    def each(start='') # :yields: term
+    def each_term(start='') # :yields: term
         opts = {}
         opts[:start] = start
         opts[:limit] = 101
@@ -167,7 +167,7 @@ class Field
         "#<field:#{name}>"
     end
     
-    alias_method :each_term, :each
+    alias_method :each, :each_term
     alias_method :term, :[]
 end
 end # Xtractr

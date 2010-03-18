@@ -94,10 +94,10 @@ with a concrete value that can further used for fine grained searches.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000066">count</a>&nbsp;&nbsp;
-      <a href="#M000065">each_packet</a>&nbsp;&nbsp;
-      <a href="#M000064">packets</a>&nbsp;&nbsp;
-      <a href="#M000067">sum</a>&nbsp;&nbsp;
+      <a href="#M000068">count</a>&nbsp;&nbsp;
+      <a href="#M000067">each_packet</a>&nbsp;&nbsp;
+      <a href="#M000066">packets</a>&nbsp;&nbsp;
+      <a href="#M000069">sum</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -143,11 +143,11 @@ Return the value of the field object.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000066" class="method-detail">
-        <a name="M000066"></a>
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
 
         <div class="method-heading">
-          <a href="#M000066" class="method-signature">
+          <a href="#M000068" class="method-signature">
           <span class="method-name">count</span><span class="method-args">(_field)</span>
           </a>
         </div>
@@ -155,14 +155,14 @@ Return the value of the field object.
         <div class="method-description">
           <p>
 Count the unique values of the specified field amongst all the <a
-href="Value.html#M000064">packets</a> that matched the query.
+href="Value.html#M000066">packets</a> that matched the query.
 </p>
 <pre>
  value.count('http.request.method')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000066-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000066-source">
+            onclick="toggleCode('M000068-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000068-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 79</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span> <span class="ruby-identifier">_field</span>
@@ -174,11 +174,11 @@ href="Value.html#M000064">packets</a> that matched the query.
         </div>
       </div>
 
-      <div id="method-M000065" class="method-detail">
-        <a name="M000065"></a>
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
 
         <div class="method-heading">
-          <a href="#M000065" class="method-signature">
+          <a href="#M000067" class="method-signature">
           <span class="method-name">each_packet</span><span class="method-args">(_q=nil) {|packet| ...}</span>
           </a>
         </div>
@@ -189,8 +189,8 @@ Iterate over each packet that contains this field value. This is a
 convenience function used primiarily in method chaining.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000065-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000065-source">
+            onclick="toggleCode('M000067-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000067-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 71</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_packet</span>(<span class="ruby-identifier">_q</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) <span class="ruby-comment cmt"># :yields: packet</span>
@@ -202,18 +202,18 @@ convenience function used primiarily in method chaining.
         </div>
       </div>
 
-      <div id="method-M000064" class="method-detail">
-        <a name="M000064"></a>
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
 
         <div class="method-heading">
-          <a href="#M000064" class="method-signature">
+          <a href="#M000066" class="method-signature">
           <span class="method-name">packets</span><span class="method-args">(_q=nil)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch the list of <a href="Value.html#M000064">packets</a> that contain
+Fetch the list of <a href="Value.html#M000066">packets</a> that contain
 this <a href="Value.html">Field::Value</a>. If the optional query is given,
 it&#8216;s AND&#8216;d to the query that matches this <a
 href="Value.html">Field::Value</a>.
@@ -223,8 +223,8 @@ href="Value.html">Field::Value</a>.
  value.packets('dns.qry.name:apple').each { |pkt| ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000064-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000064-source">
+            onclick="toggleCode('M000066-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000066-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 63</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packets</span> <span class="ruby-identifier">_q</span>=<span class="ruby-keyword kw">nil</span>
@@ -237,11 +237,11 @@ href="Value.html">Field::Value</a>.
         </div>
       </div>
 
-      <div id="method-M000067" class="method-detail">
-        <a name="M000067"></a>
+      <div id="method-M000069" class="method-detail">
+        <a name="M000069"></a>
 
         <div class="method-heading">
-          <a href="#M000067" class="method-signature">
+          <a href="#M000069" class="method-signature">
           <span class="method-name">sum</span><span class="method-args">(kfield, vfield)</span>
           </a>
         </div>
@@ -255,8 +255,8 @@ kfield.
   value.sum('flow.src', 'flow.bytes')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000067-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000067-source">
+            onclick="toggleCode('M000069-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000069-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 87</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sum</span> <span class="ruby-identifier">kfield</span>, <span class="ruby-identifier">vfield</span>

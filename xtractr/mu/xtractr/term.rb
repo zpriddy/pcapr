@@ -45,7 +45,7 @@ class Term
     # the optional q is specified, the search query is AND'd with the term's
     # own search query
     #  field.term('mozilla').each { |pkt| ... }
-    def each(q=nil, &blk) # :yields: packet
+    def each_packet(q=nil, &blk) # :yields: packet
         _q = "#{field.name}:#{value}"
         _q << " #{q}" if q
         return Packets.new(xtractr, :q => _q).each(&blk)
@@ -63,7 +63,7 @@ class Term
         "#<term:#{field.name} #{value} #{frequency}>"
     end
 
-    alias_method :each_packet, :each
+    alias_method :each, :each_packet
 end
 end # Xtractr
 end # Mu

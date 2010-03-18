@@ -83,7 +83,7 @@
 <p>
 <a href="Field.html">Field</a> represents a named packet field in the
 <b>xtractr</b> index. Each field contains tokenized <a
-href="Field.html#M000058">terms</a> along with the frequency at which they
+href="Field.html#M000060">terms</a> along with the frequency at which they
 occur. A field is a queryable object and can be used to iterate over flows
 or packets that match the <a href="Field/Value.html">Field::Value</a>. See
 <a href="Flow.html">Flow</a> or <a href="Packet.html">Packet</a> for more
@@ -94,7 +94,7 @@ information on the fields that are stored in the index.
 </pre>
 <p>
 The fields are useful for quick analysis on top trending <a
-href="Field.html#M000058">terms</a> across the entire index. Here are the
+href="Field.html#M000060">terms</a> across the entire index. Here are the
 top HTTP fields that have NOP slides in them:
 </p>
 <pre>
@@ -112,13 +112,13 @@ top HTTP fields that have NOP slides in them:
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000059">[]</a>&nbsp;&nbsp;
-      <a href="#M000060">count</a>&nbsp;&nbsp;
-      <a href="#M000057">each</a>&nbsp;&nbsp;
-      <a href="#M000062">each_term</a>&nbsp;&nbsp;
-      <a href="#M000063">term</a>&nbsp;&nbsp;
-      <a href="#M000058">terms</a>&nbsp;&nbsp;
-      <a href="#M000061">values</a>&nbsp;&nbsp;
+      <a href="#M000061">[]</a>&nbsp;&nbsp;
+      <a href="#M000062">count</a>&nbsp;&nbsp;
+      <a href="#M000064">each</a>&nbsp;&nbsp;
+      <a href="#M000059">each_term</a>&nbsp;&nbsp;
+      <a href="#M000065">term</a>&nbsp;&nbsp;
+      <a href="#M000060">terms</a>&nbsp;&nbsp;
+      <a href="#M000063">values</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -169,26 +169,26 @@ The name of the field.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000059" class="method-detail">
-        <a name="M000059"></a>
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
 
         <div class="method-heading">
-          <a href="#M000059" class="method-signature">
+          <a href="#M000061" class="method-signature">
           <span class="method-name">[]</span><span class="method-args">(which)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Find the <a href="Field.html#M000063">term</a> for this field which has the
+Find the <a href="Field.html#M000065">term</a> for this field which has the
 name and the packet frequency.
 </p>
 <pre>
  field.term 'mozilla'
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000059-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000059-source">
+            onclick="toggleCode('M000061-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000061-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 143</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span> <span class="ruby-identifier">which</span>
@@ -204,26 +204,26 @@ name and the packet frequency.
         </div>
       </div>
 
-      <div id="method-M000060" class="method-detail">
-        <a name="M000060"></a>
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
 
         <div class="method-heading">
-          <a href="#M000060" class="method-signature">
+          <a href="#M000062" class="method-signature">
           <span class="method-name">count</span><span class="method-args">(q='*')</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Find out all the unique <a href="Field.html#M000061">values</a> of this
+Find out all the unique <a href="Field.html#M000063">values</a> of this
 field with an optional query.
 </p>
 <pre>
  xtractr.field('http.user.agent').count('flow.src:192.168.1.1')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000060-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000060-source">
+            onclick="toggleCode('M000062-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000062-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 154</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span> <span class="ruby-identifier">q</span>=<span class="ruby-value str">'*'</span>
@@ -234,33 +234,47 @@ field with an optional query.
         </div>
       </div>
 
-      <div id="method-M000057" class="method-detail">
-        <a name="M000057"></a>
+      <div id="method-M000064" class="method-detail">
+        <a name="M000064"></a>
 
         <div class="method-heading">
-          <a href="#M000057" class="method-signature">
-          <span class="method-name">each</span><span class="method-args">(start='') {|term| ...}</span>
+          <span class="method-name">each</span><span class="method-args">(start='')</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Field.html#M000059">each_term</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000059" class="method-detail">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+          <a href="#M000059" class="method-signature">
+          <span class="method-name">each_term</span><span class="method-args">(start='') {|term| ...}</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch the <a href="Field.html#M000058">terms</a> and their packet
+Fetch the <a href="Field.html#M000060">terms</a> and their packet
 frequencies (in packets) for this field. If the optional start <a
-href="Field.html#M000063">term</a> is given, then the <a
-href="Field.html#M000063">term</a> enumeration starts from the specified <a
-href="Field.html#M000063">term</a>.
+href="Field.html#M000065">term</a> is given, then the <a
+href="Field.html#M000065">term</a> enumeration starts from the specified <a
+href="Field.html#M000065">term</a>.
 </p>
 <pre>
  field.each { |term| ... }
  field.each('mozilla') { |term| ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000057-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000057-source">
+            onclick="toggleCode('M000059-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000059-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 107</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-identifier">start</span>=<span class="ruby-value str">''</span>) <span class="ruby-comment cmt"># :yields: term</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_term</span>(<span class="ruby-identifier">start</span>=<span class="ruby-value str">''</span>) <span class="ruby-comment cmt"># :yields: term</span>
         <span class="ruby-identifier">opts</span> = {}
         <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:start</span>] = <span class="ruby-identifier">start</span>
         <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:limit</span>] = <span class="ruby-value">101</span>
@@ -286,22 +300,8 @@ href="Field.html#M000063">term</a>.
         </div>
       </div>
 
-      <div id="method-M000062" class="method-detail">
-        <a name="M000062"></a>
-
-        <div class="method-heading">
-          <span class="method-name">each_term</span><span class="method-args">(start='')</span>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Alias for <a href="Field.html#M000057">each</a>
-</p>
-        </div>
-      </div>
-
-      <div id="method-M000063" class="method-detail">
-        <a name="M000063"></a>
+      <div id="method-M000065" class="method-detail">
+        <a name="M000065"></a>
 
         <div class="method-heading">
           <span class="method-name">term</span><span class="method-args">(which)</span>
@@ -314,11 +314,11 @@ Alias for #[]
         </div>
       </div>
 
-      <div id="method-M000058" class="method-detail">
-        <a name="M000058"></a>
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
 
         <div class="method-heading">
-          <a href="#M000058" class="method-signature">
+          <a href="#M000060" class="method-signature">
           <span class="method-name">terms</span><span class="method-args">(regex=nil)</span>
           </a>
         </div>
@@ -326,19 +326,19 @@ Alias for #[]
         <div class="method-description">
           <p>
 Fetch the list of <em>all</em> the unique <a
-href="Field.html#M000058">terms</a> for this field, sorted by the frequency
+href="Field.html#M000060">terms</a> for this field, sorted by the frequency
 of occurence in the packets. This can be used for some quick trend analysis
-to see which <a href="Field.html#M000063">term</a> of a given field appears
+to see which <a href="Field.html#M000065">term</a> of a given field appears
 most amongst all packets in the index. Here&#8216;s an example to print out
-the top 10 <a href="Field.html#M000058">terms</a> of
+the top 10 <a href="Field.html#M000060">terms</a> of
 <em>http.request.uri</em>.
 </p>
 <pre>
  p xtractr.field('http.request.uri').terms[0..10]
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000058-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000058-source">
+            onclick="toggleCode('M000060-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000060-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 135</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">terms</span> <span class="ruby-identifier">regex</span>=<span class="ruby-keyword kw">nil</span>
@@ -351,11 +351,11 @@ the top 10 <a href="Field.html#M000058">terms</a> of
         </div>
       </div>
 
-      <div id="method-M000061" class="method-detail">
-        <a name="M000061"></a>
+      <div id="method-M000063" class="method-detail">
+        <a name="M000063"></a>
 
         <div class="method-heading">
-          <a href="#M000061" class="method-signature">
+          <a href="#M000063" class="method-signature">
           <span class="method-name">values</span><span class="method-args">(q='*')</span>
           </a>
         </div>
@@ -371,8 +371,8 @@ chaining.
  xtractr.field('http.user.agent').values.first.packets.slice('foo.pcap')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000061-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000061-source">
+            onclick="toggleCode('M000063-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000063-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/field.rb, line 162</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span> <span class="ruby-identifier">q</span>=<span class="ruby-value str">'*'</span>
