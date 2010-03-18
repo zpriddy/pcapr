@@ -3,7 +3,7 @@
 
 = xtractr query language =
 
-*xtractr* uses [http://www.davebalmain.com/ Ferret], in combination with SQLite to store all the data extracted from the pcaps. In some cases Ferret query strings are mapped to SQL statements internally so that the externally visible language is always the powerful query language. While you can check the Ferret documentation for the exact language specification, we'll most talk about how it applies to *xtractr* here.
+*xtractr* uses [http://www.davebalmain.com/ Ferret], in combination with SQLite to store all the data extracted from the pcaps. In some cases Ferret query strings are mapped to SQL statements internally so that the externally visible language is always the powerful query language. While you can check the Ferret documentation for the exact language specification, we'll mostly talk about how it applies to *xtractr* here.
 
 === Fields and Terms ===
 For the packet, xtractr effectively builds an inverted index (terms.db on the file system). Each value for the field (like ip.ttl or http.user.agent) contains a set of tokenized _terms_ which then map to which packet of which pcap contained that term. So the basis for querying are fields and terms. In addition to all the tshark fields, xtractr adds its own which are documented here.
