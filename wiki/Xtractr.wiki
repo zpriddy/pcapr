@@ -70,12 +70,9 @@ xtractr.flows('flow.service:DNS flow.smsgs:0').count('dns.qry.name')
 We iterate over all HTTP flows from a given server with the given URL, extract the stream and save the resulting message to separate files.
 
 {{{
-xtractr.flows('flow.service:HTTP favicon.ico flow.src:192.168.1.1').each do |flow|
-    flow.stream.each_message do |message|
-        body = message.bytes.split(/\r\n\r\n/, 2)[1]
-        if body
-            open("#{flow.id}::#{message.index}.ico") { |ios| ios.write body }
-        end
+xtractr.flows('flow.service:http favicon.ico').each do |flow|
+    flow.contents.each do |content|
+        content.save
     end
 end
 }}}
