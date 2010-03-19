@@ -76,3 +76,10 @@ xtractr.flows('flow.service:http favicon.ico').each do |flow|
     end
 end
 }}}
+
+=== Find URL's that are taking too long ===
+Since during the indexing process, *xtractr* calculated the duration of each flow, this one’s pretty easy. We first get a collection of flows that lasted for more than a second and then map/reduce the URI within those flows.
+
+{{{
+xtractr.flows('flow.proto:HTTP flow.duration:>1').count('http.request.uri')[0]
+}}}
