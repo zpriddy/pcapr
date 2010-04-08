@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+
+.callGraph {
+	position: relative;
+}
+
+.callGraph div {
+	position: absolute;
+}
+
+.message {
+	border-bottom: 2px solid black;
+	text-align: center;
+   	color: #414d57;
+}
+.messageLabel { 
+	display: block;
+	margin-left: 2px;
+	padding: 0px 1px;
+	background-color: #cce1e8;
+	-moz-border-radius: 3px;
+}
+
+.callGraphFlowId { font-weight: bold; } 
+
+.host {
+	border-bottom: 2px solid silver;
+	text-align: center;
+	font-size: 110%;
+	font-weight: bold;
+} 
+
+.leftArrow {
+	background: url(arrow-left-cg.png) no-repeat center -8px;
+	width: 10px;
+	height: 11px;
+}
+
+.rightArrow {
+	background: url(arrow-right-cg.png) no-repeat center -8px;
+	width: 10px;
+	height: 11px;
+}
+
+.hostAnchorLine {
+	border-left: 2px solid silver;
+}
