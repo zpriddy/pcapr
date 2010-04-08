@@ -31,13 +31,13 @@
 } 
 
 .leftArrow {
-	background: url(arrow-left-cg.png) no-repeat center -8px;
+	background: url(../image/arrow-left-cg.png) no-repeat center -8px;
 	width: 10px;
 	height: 11px;
 }
 
 .rightArrow {
-	background: url(arrow-right-cg.png) no-repeat center -8px;
+	background: url(../image/arrow-right-cg.png) no-repeat center -8px;
 	width: 10px;
 	height: 11px;
 }
