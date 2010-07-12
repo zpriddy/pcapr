@@ -91,7 +91,7 @@ class Xtractr
     def initialize address='localhost', port=8080
         @address = address
         @port = port
-        unless about.version =~ /^4\.5\.(svn|36277)$/
+        unless about.version =~ /^4\.5\.(svn|38973)$/
             puts "xtractr version #{about.version} out of date!"
             puts "please download a new one from http://www.pcapr.net/xtractr"
             raise
