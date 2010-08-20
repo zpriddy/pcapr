@@ -1,0 +1,75 @@
+.editbox {
+	margin: 10px;
+	padding: 0;
+	font-family: monospace;
+	font-size: 10pt;
+	color: black;
+}
+
+span.msl-highlight {
+    background-color: yellow;
+}
+
+span.msl-keyword {
+  color: #770088;
+  font-weight: bold;
+}
+
+span.msl-boolean {
+  color: #221188;
+}
+
+span.msl-number {
+  color: #228811;
+}
+
+span.msl-host {
+  color: black;
+  font-weight: bold;
+}
+
+span.msl-host-def {
+  color: black;
+  font-weight: bold;
+}
+
+span.msl-option {
+  color: black;
+  font-weight: bold;
+}
+
+span.msl-option-def {
+  color: black;
+  font-weight: bold;
+}
+
+span.msl-variable {
+  color: black;
+  font-weight: bold;	
+}
+
+span.msl-variable-def {
+  color: black;
+  font-weight: bold;	
+}
+
+span.msl-property {
+  color: black;
+  font-style: italic;
+}
+
+span.msl-comment {
+  color: #AA7700;
+}
+
+span.msl-string {
+  color: #AA2222;
+}
+
+span.msl-hex-string {
+	color: #8822dd;
+}
+
+span.msl-bin-string {
+	color: #8822dd;
+}
