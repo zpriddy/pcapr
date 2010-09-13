@@ -1100,6 +1100,11 @@ a.video48 {
     background: url('../image/48x48/Video.png') left 0 no-repeat;
 }
 
+a.extern {
+	background: url('../image/crosslink.png') no-repeat; 
+	padding-left: 14px;
+}
+
 img.icon {
 	border: none;
 	vertical-align: middle;
