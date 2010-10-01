@@ -48,6 +48,12 @@ class Test < Test::Unit::TestCase
         assert_equal(19791, flow.bytes)
         assert_equal(1, flow.cmsgs)
         assert_equal(1, flow.smsgs)
+        assert_equal(3, flow.instance_variable_get(:@first_id))
+        assert_equal(300, flow.instance_variable_get(:@last_id))
+        assert_kind_of(Packet, flow.first)
+        assert_equal(3, flow.first.id)
+        assert_kind_of(Packet, flow.last)
+        assert_equal(300, flow.last.id)
     end
     
     def test_each

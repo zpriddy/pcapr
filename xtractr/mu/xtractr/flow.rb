@@ -92,7 +92,27 @@ class Flow
         @bytes    = json['bytes']
         @cmsgs    = json['cmsgs']
         @smsgs    = json['smsgs']
+        @first_id = json['first']
+        @last_id  = json['last']
         @iterator = Packets.new(xtractr, :q => "pkt.flow:#{id}")
+    end
+    
+    # Return the first packet for this flow. Together the first and last
+    # packets make up the span of the flow. Read this
+    # blog[http://labs.mudynamics.com/2010/09/30/visualizing-application-flows-with-xtractr/]
+    # to see how these spans enable flow visualization.
+    #  xtractr.flow(1).first.bytes
+    def first
+        @first ||= xtractr.packet @first_id
+    end
+    
+    # Return the last packet for this flow. Together the first and last
+    # packets make up the span of the flow. Read this
+    # blog[http://labs.mudynamics.com/2010/09/30/visualizing-application-flows-with-xtractr/]
+    # to see how these spans enable flow visualization.
+    #  xtractr.flow(2).last.bytes
+    def last
+        @last ||= xtractr.packet @last_id
     end
     
     # Iterate over each packet in this flow.
