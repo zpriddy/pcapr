@@ -83,10 +83,10 @@
 <p>
 A term represents a tokenized value of a field that also contains the
 frequency of occurence across all of the <a
-href="Term.html#M000021">packets</a> in a given index. Terms are useful to
+href="Term.html#M000066">packets</a> in a given index. Terms are useful to
 get quick snapshots of the index as well as in trend analysis. For example
 the following shows the top HTTP request methods as well as the frequency
-of those methods across all of the <a href="Term.html#M000021">packets</a>.
+of those methods across all of the <a href="Term.html#M000066">packets</a>.
 </p>
 <pre>
  xtractr.field('http.request.method').terms.each do |term|
@@ -103,9 +103,9 @@ of those methods across all of the <a href="Term.html#M000021">packets</a>.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000022">each</a>&nbsp;&nbsp;
-      <a href="#M000020">each_packet</a>&nbsp;&nbsp;
-      <a href="#M000021">packets</a>&nbsp;&nbsp;
+      <a href="#M000067">each</a>&nbsp;&nbsp;
+      <a href="#M000065">each_packet</a>&nbsp;&nbsp;
+      <a href="#M000066">packets</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -166,8 +166,8 @@ Return the value of this term.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000022" class="method-detail">
-        <a name="M000022"></a>
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
 
         <div class="method-heading">
           <span class="method-name">each</span><span class="method-args">(q=nil)</span>
@@ -175,23 +175,23 @@ Return the value of this term.
       
         <div class="method-description">
           <p>
-Alias for <a href="Term.html#M000020">each_packet</a>
+Alias for <a href="Term.html#M000065">each_packet</a>
 </p>
         </div>
       </div>
 
-      <div id="method-M000020" class="method-detail">
-        <a name="M000020"></a>
+      <div id="method-M000065" class="method-detail">
+        <a name="M000065"></a>
 
         <div class="method-heading">
-          <a href="#M000020" class="method-signature">
+          <a href="#M000065" class="method-signature">
           <span class="method-name">each_packet</span><span class="method-args">(q=nil) {|packet| ...}</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch <a href="Term.html#M000022">each</a> packet from the index that has
+Fetch <a href="Term.html#M000067">each</a> packet from the index that has
 this term in this field. If the optional q is specified, the search query
 is AND&#8216;d with the term&#8216;s own search query
 </p>
@@ -199,8 +199,8 @@ is AND&#8216;d with the term&#8216;s own search query
  field.term('mozilla').each { |pkt| ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000020-source">
+            onclick="toggleCode('M000065-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000065-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/term.rb, line 52</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_packet</span>(<span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) <span class="ruby-comment cmt"># :yields: packet</span>
@@ -213,11 +213,11 @@ is AND&#8216;d with the term&#8216;s own search query
         </div>
       </div>
 
-      <div id="method-M000021" class="method-detail">
-        <a name="M000021"></a>
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
 
         <div class="method-heading">
-          <a href="#M000021" class="method-signature">
+          <a href="#M000066" class="method-signature">
           <span class="method-name">packets</span><span class="method-args">(q=nil)</span>
           </a>
         </div>
@@ -225,12 +225,12 @@ is AND&#8216;d with the term&#8216;s own search query
         <div class="method-description">
           <p>
 Return an instance of <a href="Packets.html">Packets</a> that serves as an
-iterator for all <a href="Term.html#M000021">packets</a> containing this
+iterator for all <a href="Term.html#M000066">packets</a> containing this
 term.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000021-source">
+            onclick="toggleCode('M000066-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000066-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/term.rb, line 60</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packets</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>

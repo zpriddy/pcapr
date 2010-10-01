@@ -91,7 +91,7 @@ class Xtractr
     def initialize address='localhost', port=8080
         @address = address
         @port = port
-        unless about.version =~ /^4\.5\.(svn|38973)$/
+        unless about.version =~ /^4\.5\.(svn|40426)$/
             puts "xtractr version #{about.version} out of date!"
             puts "please download a new one from http://www.pcapr.net/xtractr"
             raise
@@ -212,10 +212,10 @@ class Xtractr
     # Return the id'th packet from the index.
     #  xtractr.packet 1
     def packet id
-        result = xtractr.json "api/packets", :start => id, :limit => id
+        result = json "api/packets", :start => id, :limit => id
         rows = result['rows']
         raise ArgumentError, "Unknown packet #{id}" if rows.empty?
-        return Packet.new(xtractr, rows[0])
+        return Packet.new(self, rows[0])
     end
     
     # Fetch the URL with the GET parameters and interpret the response body

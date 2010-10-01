@@ -84,7 +84,7 @@ class Test < Test::Unit::TestCase
     
     def test_fields
         fields = xtractr.fields
-        assert_equal(165, fields.size)
+        assert_equal(170, fields.size)
         fields.each { |field| assert_instance_of(Field, field) }
         assert_equal(12, xtractr.fields(/^pkt\./).size)
         assert_equal(12, xtractr.fields("PKT.").size)
@@ -139,6 +139,12 @@ class Test < Test::Unit::TestCase
         
         packets = xtractr.packets 1...10
         assert_equal('pkt.id:[1 9]', packets.q)
+    end
+    
+    def test_packet
+        pkt = xtractr.packet 1
+        assert_kind_of(Packet, pkt)
+        assert_equal(1, pkt.id)
     end
 end
 end # Xtractr

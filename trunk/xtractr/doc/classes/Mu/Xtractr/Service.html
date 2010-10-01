@@ -92,10 +92,10 @@ through the xtractr&#8216;s methods:
 </pre>
 <p>
 Some services like HTTP have counterparts in both <a
-href="Service.html#M000073">flows</a> and <a
-href="Service.html#M000072">packets</a>, while others like ARP (all non-IP,
+href="Service.html#M000062">flows</a> and <a
+href="Service.html#M000061">packets</a>, while others like ARP (all non-IP,
 layer2 services) are only available in <a
-href="Service.html#M000072">packets</a>.
+href="Service.html#M000061">packets</a>.
 </p>
 
     </div>
@@ -107,10 +107,10 @@ href="Service.html#M000072">packets</a>.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000070">clients</a>&nbsp;&nbsp;
-      <a href="#M000073">flows</a>&nbsp;&nbsp;
-      <a href="#M000072">packets</a>&nbsp;&nbsp;
-      <a href="#M000071">servers</a>&nbsp;&nbsp;
+      <a href="#M000059">clients</a>&nbsp;&nbsp;
+      <a href="#M000062">flows</a>&nbsp;&nbsp;
+      <a href="#M000061">packets</a>&nbsp;&nbsp;
+      <a href="#M000060">servers</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -148,26 +148,26 @@ Return the name of the service
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000070" class="method-detail">
-        <a name="M000070"></a>
+      <div id="method-M000059" class="method-detail">
+        <a name="M000059"></a>
 
         <div class="method-heading">
-          <a href="#M000070" class="method-signature">
+          <a href="#M000059" class="method-signature">
           <span class="method-name">clients</span><span class="method-args">(q=nil)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Get a unique list of <a href="Service.html#M000070">clients</a> for this
+Get a unique list of <a href="Service.html#M000059">clients</a> for this
 service
 </p>
 <pre>
  xtractr.service('http').clients
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000070-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000070-source">
+            onclick="toggleCode('M000059-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000059-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/service.rb, line 40</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clients</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
@@ -180,11 +180,11 @@ service
         </div>
       </div>
 
-      <div id="method-M000073" class="method-detail">
-        <a name="M000073"></a>
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
 
         <div class="method-heading">
-          <a href="#M000073" class="method-signature">
+          <a href="#M000062" class="method-signature">
           <span class="method-name">flows</span><span class="method-args">(q=nil)</span>
           </a>
         </div>
@@ -192,15 +192,15 @@ service
         <div class="method-description">
           <p>
 Return an iterator that can yield all <a
-href="Service.html#M000073">flows</a> that have this service and matches
+href="Service.html#M000062">flows</a> that have this service and matches
 the query
 </p>
 <pre>
  xtractr.service(&quot;DNS&quot;).flows(&quot;AAAA&quot;).each { |flow| ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000073-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000073-source">
+            onclick="toggleCode('M000062-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000062-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/service.rb, line 66</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flows</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
@@ -213,11 +213,11 @@ the query
         </div>
       </div>
 
-      <div id="method-M000072" class="method-detail">
-        <a name="M000072"></a>
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
 
         <div class="method-heading">
-          <a href="#M000072" class="method-signature">
+          <a href="#M000061" class="method-signature">
           <span class="method-name">packets</span><span class="method-args">(q=nil)</span>
           </a>
         </div>
@@ -225,15 +225,15 @@ the query
         <div class="method-description">
           <p>
 Return an iterator that can yield all <a
-href="Service.html#M000072">packets</a> that have this service and matches
+href="Service.html#M000061">packets</a> that have this service and matches
 the query
 </p>
 <pre>
  xtractr.service(&quot;DNS&quot;).packets(&quot;mu&quot;).each { |pkt| ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000072-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000072-source">
+            onclick="toggleCode('M000061-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000061-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/service.rb, line 57</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packets</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
@@ -246,26 +246,26 @@ the query
         </div>
       </div>
 
-      <div id="method-M000071" class="method-detail">
-        <a name="M000071"></a>
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
 
         <div class="method-heading">
-          <a href="#M000071" class="method-signature">
+          <a href="#M000060" class="method-signature">
           <span class="method-name">servers</span><span class="method-args">(q=nil)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Get a unique list of <a href="Service.html#M000071">servers</a> for this
+Get a unique list of <a href="Service.html#M000060">servers</a> for this
 service
 </p>
 <pre>
  xtractr.service('http').servers
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000071-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000071-source">
+            onclick="toggleCode('M000060-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000060-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/service.rb, line 48</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">servers</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
