@@ -7,14 +7,14 @@
  * An easy mistake to make is to let a StopIteration exception finish
  * the token stream while there are still characters pending in the
  * string stream (hitting the end of the buffer while parsing a
- * token). To make it easier to detect such errors, the strings throw
- * an exception when this happens.
+ * token). To make it easier to detect such errors, the stringstreams
+ * throw an exception when this happens.
  */
 
-// Make a string stream out of an iterator that returns strings. This
-// is applied to the result of traverseDOM (see codemirror.js), and
-// the resulting stream is fed to the parser.
-window.stringStream = function(source){
+// Make a stringstream stream out of an iterator that returns strings.
+// This is applied to the result of traverseDOM (see codemirror.js),
+// and the resulting stream is fed to the parser.
+var stringStream = function(source){
   // String that's currently being iterated over.
   var current = "";
   // Position in that string.
@@ -39,11 +39,13 @@ window.stringStream = function(source){
   }
 
   return {
+    // peek: -> character
     // Return the next character in the stream.
     peek: function() {
       if (!ensureChars()) return null;
       return current.charAt(pos);
     },
+    // next: -> character
     // Get the next character, throw StopIteration if at end, check
     // for unused content.
     next: function() {
@@ -55,6 +57,7 @@ window.stringStream = function(source){
       }
       return current.charAt(pos++);
     },
+    // get(): -> string
     // Return the characters iterated over since the last call to
     // .get().
     get: function() {
@@ -108,6 +111,8 @@ window.stringStream = function(source){
     },
 
     // Utils built on top of the above
+    // more: -> boolean
+    // Produce true if the stream isn't empty.
     more: function() {
       return this.peek() !== null;
     },
