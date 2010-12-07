@@ -84,13 +84,27 @@ class Xtractr
     # Return the listening port of the xtractr instance
     attr_reader :port
     
+    # Relative URL
+    attr_reader :relurl
+    
+    # Create a new instance to connect to the xtractr binary using a
+    # url.
+    #   Xtractr.create 'http://some.host:8080/'
+    def self.create url
+        uri = URI.parse url
+        self.new uri.host, uri.port, uri.path
+    end
+    
     # Create a new instance to connect to the xtractr binary running in
     # browse mode.
     #   Xtractr.new
     #   Xtractr.new 'localhost', 8080
-    def initialize address='localhost', port=8080
+    def initialize address='localhost', port=8080, relurl=nil
         @address = address
         @port = port
+        @relurl = relurl || '/'
+        @relurl << '/' if @relurl[-1,1] != '/'            
+        
         unless about.version =~ /^4\.5\.(svn|40426)$/
             puts "xtractr version #{about.version} out of date!"
             puts "please download a new one from http://www.pcapr.net/xtractr"
@@ -229,13 +243,13 @@ class Xtractr
     
     # Fetch the URL and return the response body, as is
     def get url, opts={} # :nodoc:
-        _url = url
+        _url = relurl + url
         if opts.size
             _url << '?'
             _url << opts.keys.map { |key| key.to_s + '=' + opts[key].to_s }.join('&')
         end
         
-        _url = "http://#{address}:#{port}/" + URI.escape(_url)        
+        _url = "http://#{address}:#{port}" + URI.escape(_url)
         return Net::HTTP.get(URI.parse(_url))
     end
     

@@ -82,11 +82,11 @@
       <h1><a href="Sum.html">Sum</a></h1>
 <p>
 <a href="Sum.html">Sum</a> contains the results of doing a map/reduce on
-either flows or <a href="Sum.html#M000073">packets</a>. Each sum contains
+either flows or <a href="Sum.html#M000030">packets</a>. Each sum contains
 the field on which the map/reduce was performed, the unique value as all as
 the sum of that value in the flows or <a
-href="Sum.html#M000073">packets</a>. For example to <a
-href="Sum.html#M000075">count</a> the bytes sent in HTTP flows keyed by the
+href="Sum.html#M000030">packets</a>. For example to <a
+href="Sum.html#M000032">count</a> the bytes sent in HTTP flows keyed by the
 source IP address, you would do:
 </p>
 <pre>
@@ -102,10 +102,10 @@ source IP address, you would do:
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000075">count</a>&nbsp;&nbsp;
-      <a href="#M000074">each_packet</a>&nbsp;&nbsp;
-      <a href="#M000072">object</a>&nbsp;&nbsp;
-      <a href="#M000073">packets</a>&nbsp;&nbsp;
+      <a href="#M000032">count</a>&nbsp;&nbsp;
+      <a href="#M000031">each_packet</a>&nbsp;&nbsp;
+      <a href="#M000029">object</a>&nbsp;&nbsp;
+      <a href="#M000030">packets</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -159,11 +159,11 @@ Returns the unique value used as the map/reduce key.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000075" class="method-detail">
-        <a name="M000075"></a>
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
 
         <div class="method-heading">
-          <a href="#M000075" class="method-signature">
+          <a href="#M000032" class="method-signature">
           <span class="method-name">count</span><span class="method-args">(_field)</span>
           </a>
         </div>
@@ -171,15 +171,15 @@ Returns the unique value used as the map/reduce key.
         <div class="method-description">
           <p>
 <a href="Count.html">Count</a> the unique values of the specified field
-amongst all the <a href="Sum.html#M000073">packets</a> that matched the
+amongst all the <a href="Sum.html#M000030">packets</a> that matched the
 query.
 </p>
 <pre>
  xtractr.flows.sum('flow.src', 'flow.bytes').first.count('flow.service')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000075-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000075-source">
+            onclick="toggleCode('M000032-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000032-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 131</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span> <span class="ruby-identifier">_field</span>
@@ -190,11 +190,11 @@ query.
         </div>
       </div>
 
-      <div id="method-M000074" class="method-detail">
-        <a name="M000074"></a>
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
 
         <div class="method-heading">
-          <a href="#M000074" class="method-signature">
+          <a href="#M000031" class="method-signature">
           <span class="method-name">each_packet</span><span class="method-args">(q=nil, &amp;blk)</span>
           </a>
         </div>
@@ -207,8 +207,8 @@ Iterate over each packet that contains this field value.
  xtractr.flows.sum('flow.src', 'flow.bytes').first.each_packet { |pkt ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000074-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000074-source">
+            onclick="toggleCode('M000031-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000031-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 123</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_packet</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>
@@ -220,11 +220,11 @@ Iterate over each packet that contains this field value.
         </div>
       </div>
 
-      <div id="method-M000072" class="method-detail">
-        <a name="M000072"></a>
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
 
         <div class="method-heading">
-          <a href="#M000072" class="method-signature">
+          <a href="#M000029" class="method-signature">
           <span class="method-name">object</span><span class="method-args">()</span>
           </a>
         </div>
@@ -232,17 +232,17 @@ Iterate over each packet that contains this field value.
         <div class="method-description">
           <p>
 Returns a <a href="../Field/Value.html">Field::Value</a> <a
-href="Sum.html#M000072">object</a> that can be used for further method
+href="Sum.html#M000029">object</a> that can be used for further method
 chaining. In the following example, we first compute the top talkers (based
 on the bytes sent) and then use the topmost talker to <a
-href="Sum.html#M000075">count</a> the list of unique services.
+href="Sum.html#M000032">count</a> the list of unique services.
 </p>
 <pre>
  xtractr.flows.sum('flow.src', 'flow.bytes').first.object.count('flow.service')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000072-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000072-source">
+            onclick="toggleCode('M000029-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000029-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 111</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">object</span>
@@ -253,26 +253,26 @@ href="Sum.html#M000075">count</a> the list of unique services.
         </div>
       </div>
 
-      <div id="method-M000073" class="method-detail">
-        <a name="M000073"></a>
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
 
         <div class="method-heading">
-          <a href="#M000073" class="method-signature">
+          <a href="#M000030" class="method-signature">
           <span class="method-name">packets</span><span class="method-args">(q=nil)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch the list of <a href="Sum.html#M000073">packets</a> that contain this
+Fetch the list of <a href="Sum.html#M000030">packets</a> that contain this
 field value.
 </p>
 <pre>
  xtractr.flows.sum('flow.src', 'flow.bytes').first.packets.each { |pkt ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000073-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000073-source">
+            onclick="toggleCode('M000030-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000030-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 117</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packets</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>

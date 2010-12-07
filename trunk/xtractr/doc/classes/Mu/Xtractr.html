@@ -145,8 +145,8 @@ First download <b>xtractr</b> from <a
 href="http://www.pcapr.net/xtractr">www.pcapr.net/xtractr</a>. Follow the
 instructions to index your pcap. Finally run xtractr in browse mode and
 then you can hang out in IRB poking around <a
-href="Xtractr.html#M000009">flows</a> and <a
-href="Xtractr.html#M000011">packets</a>.
+href="Xtractr.html#M000010">flows</a> and <a
+href="Xtractr.html#M000012">packets</a>.
 </p>
 <h1>Examples</h1>
 <p>
@@ -171,7 +171,7 @@ session:
 <b>Top DNS query names</b>
 </p>
 <p>
-We first pull out all DNS <a href="Xtractr.html#M000009">flows</a> and then
+We first pull out all DNS <a href="Xtractr.html#M000010">flows</a> and then
 map/reduce the unique values of the <em>dns.qry.name</em>.
 </p>
 <pre>
@@ -184,20 +184,20 @@ map/reduce the unique values of the <em>dns.qry.name</em>.
 We first sum the total number of bytes using the src address as the key.
 The sum function returns the matches sorted by the bytes. We then use the
 first object (the top talker) to in turn map/reduce the unique list of <a
-href="Xtractr.html#M000007">services</a> supported by it.
+href="Xtractr.html#M000008">services</a> supported by it.
 </p>
 <pre>
  irb&gt; xtractr.flows.sum('flow.src', 'flow.bytes').first.count('flow.service')
 </pre>
 <p>
-<b>Generating <a href="Xtractr.html#M000001">new</a> pcaps based on search
+<b>Generating <a href="Xtractr.html#M000002">new</a> pcaps based on search
 criteria</b>
 </p>
 <p>
 We first get a list of the unique HTTP methods in the index and then for
 each of methods, query for all the <a
-href="Xtractr.html#M000011">packets</a> and then save them into a <a
-href="Xtractr.html#M000001">new</a> pcap.
+href="Xtractr.html#M000012">packets</a> and then save them into a <a
+href="Xtractr.html#M000002">new</a> pcap.
 </p>
 <pre>
  irb&gt; xtractr.packets.count('http.request.method').each { |c| c.packets.save(&quot;#{c.value}.pcap&quot;) }
@@ -212,18 +212,19 @@ href="Xtractr.html#M000001">new</a> pcap.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000002">about</a>&nbsp;&nbsp;
-      <a href="#M000004">field</a>&nbsp;&nbsp;
-      <a href="#M000003">fields</a>&nbsp;&nbsp;
-      <a href="#M000010">flow</a>&nbsp;&nbsp;
-      <a href="#M000009">flows</a>&nbsp;&nbsp;
-      <a href="#M000006">host</a>&nbsp;&nbsp;
-      <a href="#M000005">hosts</a>&nbsp;&nbsp;
-      <a href="#M000001">new</a>&nbsp;&nbsp;
-      <a href="#M000012">packet</a>&nbsp;&nbsp;
-      <a href="#M000011">packets</a>&nbsp;&nbsp;
-      <a href="#M000008">service</a>&nbsp;&nbsp;
-      <a href="#M000007">services</a>&nbsp;&nbsp;
+      <a href="#M000003">about</a>&nbsp;&nbsp;
+      <a href="#M000001">create</a>&nbsp;&nbsp;
+      <a href="#M000005">field</a>&nbsp;&nbsp;
+      <a href="#M000004">fields</a>&nbsp;&nbsp;
+      <a href="#M000011">flow</a>&nbsp;&nbsp;
+      <a href="#M000010">flows</a>&nbsp;&nbsp;
+      <a href="#M000007">host</a>&nbsp;&nbsp;
+      <a href="#M000006">hosts</a>&nbsp;&nbsp;
+      <a href="#M000002">new</a>&nbsp;&nbsp;
+      <a href="#M000013">packet</a>&nbsp;&nbsp;
+      <a href="#M000012">packets</a>&nbsp;&nbsp;
+      <a href="#M000009">service</a>&nbsp;&nbsp;
+      <a href="#M000008">services</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -275,6 +276,14 @@ Return the listening port of the xtractr instance
 
 </td>
         </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">relurl</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Relative URL
+
+</td>
+        </tr>
         </table>
       </div>
     </div>
@@ -290,13 +299,44 @@ Return the listening port of the xtractr instance
 
         <div class="method-heading">
           <a href="#M000001" class="method-signature">
-          <span class="method-name">new</span><span class="method-args">(address='localhost', port=8080)</span>
+          <span class="method-name">create</span><span class="method-args">(url)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Create a <a href="Xtractr.html#M000001">new</a> instance to connect to the
+Create a <a href="Xtractr.html#M000002">new</a> instance to connect to the
+xtractr binary using a url.
+</p>
+<pre>
+  Xtractr.create 'http://some.host:8080/'
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000001-source">
+<pre>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 93</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create</span> <span class="ruby-identifier">url</span>
+        <span class="ruby-identifier">uri</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">url</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">host</span>, <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">port</span>, <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">path</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="#M000002" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(address='localhost', port=8080, relurl=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Create a <a href="Xtractr.html#M000002">new</a> instance to connect to the
 xtractr binary running in browse mode.
 </p>
 <pre>
@@ -304,13 +344,16 @@ xtractr binary running in browse mode.
   Xtractr.new 'localhost', 8080
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000001-source">
+            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000002-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 91</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">address</span>=<span class="ruby-value str">'localhost'</span>, <span class="ruby-identifier">port</span>=<span class="ruby-value">8080</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 102</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">address</span>=<span class="ruby-value str">'localhost'</span>, <span class="ruby-identifier">port</span>=<span class="ruby-value">8080</span>, <span class="ruby-identifier">relurl</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-ivar">@address</span> = <span class="ruby-identifier">address</span>
         <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>
+        <span class="ruby-ivar">@relurl</span> = <span class="ruby-identifier">relurl</span> <span class="ruby-operator">||</span> <span class="ruby-value str">'/'</span>
+        <span class="ruby-ivar">@relurl</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'/'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@relurl</span>[<span class="ruby-value">-1</span>,<span class="ruby-value">1</span>] <span class="ruby-operator">!=</span> <span class="ruby-value str">'/'</span>            
+        
         <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">about</span>.<span class="ruby-identifier">version</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^4\.5\.(svn|40426)$/</span>
             <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;xtractr version #{about.version} out of date!&quot;</span>
             <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;please download a new one from http://www.pcapr.net/xtractr&quot;</span>
@@ -324,33 +367,64 @@ xtractr binary running in browse mode.
 
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000002" class="method-detail">
-        <a name="M000002"></a>
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
 
         <div class="method-heading">
-          <a href="#M000002" class="method-signature">
+          <a href="#M000003" class="method-signature">
           <span class="method-name">about</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch the meta data <a href="Xtractr.html#M000002">about</a> the index.
-This includes information <a href="Xtractr.html#M000002">about</a> the
-total number of <a href="Xtractr.html#M000011">packets</a>, <a
-href="Xtractr.html#M000009">flows</a> as well as the duration of the entire
+Fetch the meta data <a href="Xtractr.html#M000003">about</a> the index.
+This includes information <a href="Xtractr.html#M000003">about</a> the
+total number of <a href="Xtractr.html#M000012">packets</a>, <a
+href="Xtractr.html#M000010">flows</a> as well as the duration of the entire
 set of pcaps in the index.
 </p>
 <pre>
  xtractr.about
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000002-source">
+            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000003-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 105</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 119</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">about</span>
         <span class="ruby-ivar">@about</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">About</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">json</span>(<span class="ruby-value str">'api/about'</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="#M000005" class="method-signature">
+          <span class="method-name">field</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Fetch a <a href="Xtractr.html#M000005">field</a> of the given name.
+</p>
+<pre>
+ xtractr.field 'http.server'
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
+<pre>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 137</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">field</span> <span class="ruby-identifier">name</span>
+        <span class="ruby-identifier">obj</span> = <span class="ruby-identifier">fields</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span> }
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Unknown field #{name}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">obj</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">obj</span>
     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
@@ -362,45 +436,14 @@ set of pcaps in the index.
 
         <div class="method-heading">
           <a href="#M000004" class="method-signature">
-          <span class="method-name">field</span><span class="method-args">(name)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Fetch a <a href="Xtractr.html#M000004">field</a> of the given name.
-</p>
-<pre>
- xtractr.field 'http.server'
-</pre>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000004-source">
-<pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 123</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">field</span> <span class="ruby-identifier">name</span>
-        <span class="ruby-identifier">obj</span> = <span class="ruby-identifier">fields</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span> }
-        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Unknown field #{name}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">obj</span>
-        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">obj</span>
-    <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000003" class="method-detail">
-        <a name="M000003"></a>
-
-        <div class="method-heading">
-          <a href="#M000003" class="method-signature">
           <span class="method-name">fields</span><span class="method-args">(regex=nil)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch the list of <a href="Xtractr.html#M000003">fields</a> in the index.
-The <a href="Xtractr.html#M000003">fields</a> are only available if the
+Fetch the list of <a href="Xtractr.html#M000004">fields</a> in the index.
+The <a href="Xtractr.html#M000004">fields</a> are only available if the
 <em>&#8212;mode forensics</em> was used during the indexing process.
 </p>
 <pre>
@@ -409,10 +452,10 @@ The <a href="Xtractr.html#M000003">fields</a> are only available if the
  xtractr.fields 'http.server'
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000003-source">
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 114</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 128</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fields</span> <span class="ruby-identifier">regex</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-identifier">regex</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">regex</span>, <span class="ruby-constant">Regexp</span><span class="ruby-operator">::</span><span class="ruby-constant">IGNORECASE</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">regex</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
         <span class="ruby-identifier">result</span> = (<span class="ruby-ivar">@fields</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">json</span> <span class="ruby-value str">'api/fields'</span>)
@@ -424,28 +467,28 @@ The <a href="Xtractr.html#M000003">fields</a> are only available if the
         </div>
       </div>
 
-      <div id="method-M000010" class="method-detail">
-        <a name="M000010"></a>
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
 
         <div class="method-heading">
-          <a href="#M000010" class="method-signature">
+          <a href="#M000011" class="method-signature">
           <span class="method-name">flow</span><span class="method-args">(id)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Return the id&#8216;th <a href="Xtractr.html#M000010">flow</a> from the
+Return the id&#8216;th <a href="Xtractr.html#M000011">flow</a> from the
 index.
 </p>
 <pre>
  xtractr.flow 1
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000010-source">
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 189</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 203</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flow</span> <span class="ruby-identifier">id</span>
         <span class="ruby-identifier">result</span> = <span class="ruby-identifier">json</span> <span class="ruby-value str">&quot;api/flows&quot;</span>, <span class="ruby-identifier">:start</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">:limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>
         <span class="ruby-identifier">rows</span> = <span class="ruby-identifier">result</span>[<span class="ruby-value str">'rows'</span>]
@@ -457,11 +500,11 @@ index.
         </div>
       </div>
 
-      <div id="method-M000009" class="method-detail">
-        <a name="M000009"></a>
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
 
         <div class="method-heading">
-          <a href="#M000009" class="method-signature">
+          <a href="#M000010" class="method-signature">
           <span class="method-name">flows</span><span class="method-args">(q='*') {|flow| ...}</span>
           </a>
         </div>
@@ -469,9 +512,9 @@ index.
         <div class="method-description">
           <p>
 Return an iterator that can yield each <a
-href="Xtractr.html#M000010">flow</a> that matched the query. If <em>q</em>
+href="Xtractr.html#M000011">flow</a> that matched the query. If <em>q</em>
 is a Range, then it&#8216;s used to extract the set of <a
-href="Xtractr.html#M000009">flows</a> that match all of those ids.
+href="Xtractr.html#M000010">flows</a> that match all of those ids.
 </p>
 <pre>
  xtractr.flows.each { |flow| ... }
@@ -479,10 +522,10 @@ href="Xtractr.html#M000009">flows</a> that match all of those ids.
  xtractr.flows(&quot;flow.src:192.168.1.1&quot;).each { |flow| ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000009-source">
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 177</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 191</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flows</span>(<span class="ruby-identifier">q</span>=<span class="ruby-value str">'*'</span>) <span class="ruby-comment cmt"># :yields: flow</span>
         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Range</span>
             <span class="ruby-identifier">first</span> = <span class="ruby-identifier">q</span>.<span class="ruby-identifier">first</span>
@@ -497,27 +540,27 @@ href="Xtractr.html#M000009">flows</a> that match all of those ids.
         </div>
       </div>
 
-      <div id="method-M000006" class="method-detail">
-        <a name="M000006"></a>
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
 
         <div class="method-heading">
-          <a href="#M000006" class="method-signature">
+          <a href="#M000007" class="method-signature">
           <span class="method-name">host</span><span class="method-args">(address)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch a <a href="Xtractr.html#M000006">host</a> of the given address.
+Fetch a <a href="Xtractr.html#M000007">host</a> of the given address.
 </p>
 <pre>
  xtractr.host '192.168.1.1'
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000006-source">
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 144</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 158</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">host</span> <span class="ruby-identifier">address</span>
         <span class="ruby-identifier">obj</span> = <span class="ruby-identifier">hosts</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>.<span class="ruby-identifier">address</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">address</span> }
         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Unknown host #{address}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">obj</span>
@@ -528,20 +571,20 @@ Fetch a <a href="Xtractr.html#M000006">host</a> of the given address.
         </div>
       </div>
 
-      <div id="method-M000005" class="method-detail">
-        <a name="M000005"></a>
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
 
         <div class="method-heading">
-          <a href="#M000005" class="method-signature">
+          <a href="#M000006" class="method-signature">
           <span class="method-name">hosts</span><span class="method-args">(regex=nil)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch the list of <a href="Xtractr.html#M000005">hosts</a> in the index.
+Fetch the list of <a href="Xtractr.html#M000006">hosts</a> in the index.
 The optional regex (or String) can be used to filter the <a
-href="Xtractr.html#M000005">hosts</a> list.
+href="Xtractr.html#M000006">hosts</a> list.
 </p>
 <pre>
  xtractr.hosts
@@ -549,10 +592,10 @@ href="Xtractr.html#M000005">hosts</a> list.
  xtractr.hosts '10.10'
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000005-source">
+            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000006-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 134</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 148</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hosts</span> <span class="ruby-identifier">regex</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-identifier">regex</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">regex</span>, <span class="ruby-constant">Regexp</span><span class="ruby-operator">::</span><span class="ruby-constant">IGNORECASE</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">regex</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
         <span class="ruby-identifier">result</span> = (<span class="ruby-ivar">@hosts</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">json</span> <span class="ruby-value str">'api/hosts'</span>)
@@ -565,28 +608,28 @@ href="Xtractr.html#M000005">hosts</a> list.
         </div>
       </div>
 
-      <div id="method-M000012" class="method-detail">
-        <a name="M000012"></a>
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
 
         <div class="method-heading">
-          <a href="#M000012" class="method-signature">
+          <a href="#M000013" class="method-signature">
           <span class="method-name">packet</span><span class="method-args">(id)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Return the id&#8216;th <a href="Xtractr.html#M000012">packet</a> from the
+Return the id&#8216;th <a href="Xtractr.html#M000013">packet</a> from the
 index.
 </p>
 <pre>
  xtractr.packet 1
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000012-source">
+            onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000013-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 214</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 228</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packet</span> <span class="ruby-identifier">id</span>
         <span class="ruby-identifier">result</span> = <span class="ruby-identifier">json</span> <span class="ruby-value str">&quot;api/packets&quot;</span>, <span class="ruby-identifier">:start</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">:limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>
         <span class="ruby-identifier">rows</span> = <span class="ruby-identifier">result</span>[<span class="ruby-value str">'rows'</span>]
@@ -598,11 +641,11 @@ index.
         </div>
       </div>
 
-      <div id="method-M000011" class="method-detail">
-        <a name="M000011"></a>
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
 
         <div class="method-heading">
-          <a href="#M000011" class="method-signature">
+          <a href="#M000012" class="method-signature">
           <span class="method-name">packets</span><span class="method-args">(q='*') {|packet| ...}</span>
           </a>
         </div>
@@ -610,9 +653,9 @@ index.
         <div class="method-description">
           <p>
 Return an iterator that can yield each <a
-href="Xtractr.html#M000012">packet</a> that matched the query. If
+href="Xtractr.html#M000013">packet</a> that matched the query. If
 <em>q</em> is a Range, then it&#8216;s used to extract the set of <a
-href="Xtractr.html#M000011">packets</a> that match all of those ids.
+href="Xtractr.html#M000012">packets</a> that match all of those ids.
 </p>
 <pre>
  xtractr.packets.each { |pkt| ... }
@@ -620,10 +663,10 @@ href="Xtractr.html#M000011">packets</a> that match all of those ids.
  xtractr.packets(&quot;http.user.agent:mozilla&quot;).each { |pkt| ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000011-source">
+            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000012-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 202</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 216</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packets</span>(<span class="ruby-identifier">q</span>=<span class="ruby-value str">'*'</span>) <span class="ruby-comment cmt"># :yields: packet</span>
         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Range</span>
             <span class="ruby-identifier">first</span> = <span class="ruby-identifier">q</span>.<span class="ruby-identifier">first</span>
@@ -638,27 +681,27 @@ href="Xtractr.html#M000011">packets</a> that match all of those ids.
         </div>
       </div>
 
-      <div id="method-M000008" class="method-detail">
-        <a name="M000008"></a>
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
 
         <div class="method-heading">
-          <a href="#M000008" class="method-signature">
+          <a href="#M000009" class="method-signature">
           <span class="method-name">service</span><span class="method-args">(name)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch a <a href="Xtractr.html#M000008">service</a> of the given name.
+Fetch a <a href="Xtractr.html#M000009">service</a> of the given name.
 </p>
 <pre>
  xtractr.service 'dns'
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000008-source">
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 165</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 179</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">service</span> <span class="ruby-identifier">name</span>
         <span class="ruby-identifier">obj</span> = <span class="ruby-identifier">services</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span> }
         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Unknown service #{name}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">obj</span>
@@ -669,20 +712,20 @@ Fetch a <a href="Xtractr.html#M000008">service</a> of the given name.
         </div>
       </div>
 
-      <div id="method-M000007" class="method-detail">
-        <a name="M000007"></a>
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
 
         <div class="method-heading">
-          <a href="#M000007" class="method-signature">
+          <a href="#M000008" class="method-signature">
           <span class="method-name">services</span><span class="method-args">(regex=nil)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch the list of <a href="Xtractr.html#M000007">services</a> in the index.
+Fetch the list of <a href="Xtractr.html#M000008">services</a> in the index.
 The optional regex (or String) can be used to filter the <a
-href="Xtractr.html#M000007">services</a> lists.
+href="Xtractr.html#M000008">services</a> lists.
 </p>
 <pre>
  xtractr.services
@@ -690,10 +733,10 @@ href="Xtractr.html#M000007">services</a> lists.
  xtractr.services 'sip'
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000007-source">
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
 <pre>
-<span class="ruby-comment cmt"># File mu/xtractr.rb, line 155</span>
+<span class="ruby-comment cmt"># File mu/xtractr.rb, line 169</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">services</span> <span class="ruby-identifier">regex</span>=<span class="ruby-keyword kw">nil</span>
         <span class="ruby-identifier">regex</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">regex</span>, <span class="ruby-constant">Regexp</span><span class="ruby-operator">::</span><span class="ruby-constant">IGNORECASE</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">regex</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
         <span class="ruby-identifier">result</span> = (<span class="ruby-ivar">@services</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">json</span> <span class="ruby-value str">'api/services'</span>)

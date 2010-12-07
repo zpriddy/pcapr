@@ -82,10 +82,10 @@
       <h1><a href="Count.html">Count</a></h1>
 <p>
 <a href="Count.html">Count</a> contains the results of doing a map/reduce
-on either flows or <a href="Count.html#M000069">packets</a>. Each count
+on either flows or <a href="Count.html#M000034">packets</a>. Each count
 contains the field on which the map/reduce was performed, the unique value
 as all as the count of that value in the flows or <a
-href="Count.html#M000069">packets</a>. For example to count the unique
+href="Count.html#M000034">packets</a>. For example to count the unique
 source IP address of HTTP flows in the first five minutes of the index, you
 would do:
 </p>
@@ -102,10 +102,10 @@ would do:
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000070">each_packet</a>&nbsp;&nbsp;
-      <a href="#M000068">object</a>&nbsp;&nbsp;
-      <a href="#M000069">packets</a>&nbsp;&nbsp;
-      <a href="#M000071">sum</a>&nbsp;&nbsp;
+      <a href="#M000035">each_packet</a>&nbsp;&nbsp;
+      <a href="#M000033">object</a>&nbsp;&nbsp;
+      <a href="#M000034">packets</a>&nbsp;&nbsp;
+      <a href="#M000036">sum</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -159,11 +159,11 @@ Returns the unique value of the field.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000070" class="method-detail">
-        <a name="M000070"></a>
+      <div id="method-M000035" class="method-detail">
+        <a name="M000035"></a>
 
         <div class="method-heading">
-          <a href="#M000070" class="method-signature">
+          <a href="#M000035" class="method-signature">
           <span class="method-name">each_packet</span><span class="method-args">(q=nil) {|packet| ...}</span>
           </a>
         </div>
@@ -176,8 +176,8 @@ Iterate over each packet that contains this field value.
  xtractr.flows.count('flow.src').first.each_packet { |pkt ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000070-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000070-source">
+            onclick="toggleCode('M000035-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000035-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 62</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_packet</span>(<span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) <span class="ruby-comment cmt"># :yields: packet</span>
@@ -189,11 +189,11 @@ Iterate over each packet that contains this field value.
         </div>
       </div>
 
-      <div id="method-M000068" class="method-detail">
-        <a name="M000068"></a>
+      <div id="method-M000033" class="method-detail">
+        <a name="M000033"></a>
 
         <div class="method-heading">
-          <a href="#M000068" class="method-signature">
+          <a href="#M000033" class="method-signature">
           <span class="method-name">object</span><span class="method-args">()</span>
           </a>
         </div>
@@ -201,15 +201,15 @@ Iterate over each packet that contains this field value.
         <div class="method-description">
           <p>
 Returns a <a href="../Field/Value.html">Field::Value</a> <a
-href="Count.html#M000068">object</a> that can be used for further method
+href="Count.html#M000033">object</a> that can be used for further method
 chaining.
 </p>
 <pre>
  xtractr.flows.count('flow.src').first.object.count('flow.service')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000068-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000068-source">
+            onclick="toggleCode('M000033-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000033-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 50</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">object</span>
@@ -220,26 +220,26 @@ chaining.
         </div>
       </div>
 
-      <div id="method-M000069" class="method-detail">
-        <a name="M000069"></a>
+      <div id="method-M000034" class="method-detail">
+        <a name="M000034"></a>
 
         <div class="method-heading">
-          <a href="#M000069" class="method-signature">
+          <a href="#M000034" class="method-signature">
           <span class="method-name">packets</span><span class="method-args">(q=nil)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch the list of <a href="Count.html#M000069">packets</a> that contain
+Fetch the list of <a href="Count.html#M000034">packets</a> that contain
 this field value.
 </p>
 <pre>
  xtractr.flows.count('flow.src').first.packets.each { |pkt ... }
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000069-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000069-source">
+            onclick="toggleCode('M000034-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000034-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 56</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packets</span> <span class="ruby-identifier">q</span>=<span class="ruby-keyword kw">nil</span>
@@ -250,11 +250,11 @@ this field value.
         </div>
       </div>
 
-      <div id="method-M000071" class="method-detail">
-        <a name="M000071"></a>
+      <div id="method-M000036" class="method-detail">
+        <a name="M000036"></a>
 
         <div class="method-heading">
-          <a href="#M000071" class="method-signature">
+          <a href="#M000036" class="method-signature">
           <span class="method-name">sum</span><span class="method-args">(kfield, vfield)</span>
           </a>
         </div>
@@ -268,8 +268,8 @@ unique values of kfield. This is used for method chaining.
  xtractr.flows.count('flow.src').first.sum('flow.service', 'flow.bytes')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000071-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000071-source">
+            onclick="toggleCode('M000036-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000036-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/views.rb, line 70</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sum</span> <span class="ruby-identifier">kfield</span>, <span class="ruby-identifier">vfield</span>

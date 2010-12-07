@@ -111,13 +111,13 @@ into a new pcap.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000054">count</a>&nbsp;&nbsp;
-      <a href="#M000058">each</a>&nbsp;&nbsp;
-      <a href="#M000052">each_packet</a>&nbsp;&nbsp;
-      <a href="#M000053">first</a>&nbsp;&nbsp;
-      <a href="#M000057">save</a>&nbsp;&nbsp;
-      <a href="#M000056">sum</a>&nbsp;&nbsp;
-      <a href="#M000055">values</a>&nbsp;&nbsp;
+      <a href="#M000016">count</a>&nbsp;&nbsp;
+      <a href="#M000020">each</a>&nbsp;&nbsp;
+      <a href="#M000014">each_packet</a>&nbsp;&nbsp;
+      <a href="#M000015">first</a>&nbsp;&nbsp;
+      <a href="#M000019">save</a>&nbsp;&nbsp;
+      <a href="#M000018">sum</a>&nbsp;&nbsp;
+      <a href="#M000017">values</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -146,26 +146,26 @@ into a new pcap.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000054" class="method-detail">
-        <a name="M000054"></a>
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
 
         <div class="method-heading">
-          <a href="#M000054" class="method-signature">
+          <a href="#M000016" class="method-signature">
           <span class="method-name">count</span><span class="method-args">(field)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Count the unique <a href="Packets.html#M000055">values</a> of the specified
+Count the unique <a href="Packets.html#M000017">values</a> of the specified
 field amongst all the packets that matched the query.
 </p>
 <pre>
  xtractr.packets('mozilla').count('http.request.uri')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000054-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000054-source">
+            onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000016-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/packets.rb, line 86</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span> <span class="ruby-identifier">field</span>
@@ -176,8 +176,8 @@ field amongst all the packets that matched the query.
         </div>
       </div>
 
-      <div id="method-M000058" class="method-detail">
-        <a name="M000058"></a>
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
 
         <div class="method-heading">
           <span class="method-name">each</span><span class="method-args">()</span>
@@ -185,23 +185,23 @@ field amongst all the packets that matched the query.
       
         <div class="method-description">
           <p>
-Alias for <a href="Packets.html#M000052">each_packet</a>
+Alias for <a href="Packets.html#M000014">each_packet</a>
 </p>
         </div>
       </div>
 
-      <div id="method-M000052" class="method-detail">
-        <a name="M000052"></a>
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
 
         <div class="method-heading">
-          <a href="#M000052" class="method-signature">
+          <a href="#M000014" class="method-signature">
           <span class="method-name">each_packet</span><span class="method-args">() {|packet| ...}</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Iterate over <a href="Packets.html#M000058">each</a> packet that matches
+Iterate over <a href="Packets.html#M000020">each</a> packet that matches
 the search criteria. It&#8216;s always better to use this with a
 fine-grained query instead of packets.to_a because it&#8216;s going to try
 and load <em>all</em> packets from the index.
@@ -212,8 +212,8 @@ and load <em>all</em> packets from the index.
  end
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000052-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000052-source">
+            onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000014-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/packets.rb, line 54</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_packet</span>() <span class="ruby-comment cmt"># :yields: packet</span>
@@ -241,23 +241,23 @@ and load <em>all</em> packets from the index.
         </div>
       </div>
 
-      <div id="method-M000053" class="method-detail">
-        <a name="M000053"></a>
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
 
         <div class="method-heading">
-          <a href="#M000053" class="method-signature">
+          <a href="#M000015" class="method-signature">
           <span class="method-name">first</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Fetch the <a href="Packets.html#M000053">first</a> packet that matched the
+Fetch the <a href="Packets.html#M000015">first</a> packet that matched the
 query. Mostly used for unit testing.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000053-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000053-source">
+            onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000015-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/packets.rb, line 77</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first</span>
@@ -270,11 +270,11 @@ query. Mostly used for unit testing.
         </div>
       </div>
 
-      <div id="method-M000057" class="method-detail">
-        <a name="M000057"></a>
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
 
         <div class="method-heading">
-          <a href="#M000057" class="method-signature">
+          <a href="#M000019" class="method-signature">
           <span class="method-name">save</span><span class="method-args">(filename)</span>
           </a>
         </div>
@@ -282,14 +282,14 @@ query. Mostly used for unit testing.
         <div class="method-description">
           <p>
 Stich together a pcap made up of all packets that matched the query and <a
-href="Packets.html#M000057">save</a> it to the filename.
+href="Packets.html#M000019">save</a> it to the filename.
 </p>
 <pre>
  xtractr.packets('pkt.service:DNS pkt.length:&gt;64').save('foo.pcap')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000057-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000057-source">
+            onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000019-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/packets.rb, line 107</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">save</span> <span class="ruby-identifier">filename</span>
@@ -304,26 +304,26 @@ href="Packets.html#M000057">save</a> it to the filename.
         </div>
       </div>
 
-      <div id="method-M000056" class="method-detail">
-        <a name="M000056"></a>
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
 
         <div class="method-heading">
-          <a href="#M000056" class="method-signature">
+          <a href="#M000018" class="method-signature">
           <span class="method-name">sum</span><span class="method-args">(kfield, vfield)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Sum the numeric <a href="Packets.html#M000055">values</a> of vfield, keyed
-by the unique <a href="Packets.html#M000055">values</a> of kfield.
+Sum the numeric <a href="Packets.html#M000017">values</a> of vfield, keyed
+by the unique <a href="Packets.html#M000017">values</a> of kfield.
 </p>
 <pre>
  xtractr.packets('mozilla').sum('http.request.uri', 'pkt.length')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000056-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000056-source">
+            onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000018-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/packets.rb, line 100</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sum</span> <span class="ruby-identifier">kfield</span>, <span class="ruby-identifier">vfield</span>
@@ -334,11 +334,11 @@ by the unique <a href="Packets.html#M000055">values</a> of kfield.
         </div>
       </div>
 
-      <div id="method-M000055" class="method-detail">
-        <a name="M000055"></a>
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
 
         <div class="method-heading">
-          <a href="#M000055" class="method-signature">
+          <a href="#M000017" class="method-signature">
           <span class="method-name">values</span><span class="method-args">(field)</span>
           </a>
         </div>
@@ -353,8 +353,8 @@ method used in method chaining.
  xtractr.packets('index.html').values('http.request.uri')
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000055-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000055-source">
+            onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000017-source">
 <pre>
 <span class="ruby-comment cmt"># File mu/xtractr/packets.rb, line 93</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span> <span class="ruby-identifier">field</span>
