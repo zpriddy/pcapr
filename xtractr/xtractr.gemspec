@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
     s.homepage     = 'http://www.pcapr.net/xtractr'
 	s.date         = Time.now
     s.require_path = '.'
-    s.files        = FileList['mu/xtractr.rb', 'mu/xtractr/*.rb'].to_a
+    s.files        = FileList['mu/xtractr.rb', 'mu/**/*.rb'].to_a
     s.has_rdoc     = true
 	s.rdoc_options = ['--inline-source', '--main', 'Mu::Xtractr']
 	s.add_dependency('json', '>= 1.1.3')
