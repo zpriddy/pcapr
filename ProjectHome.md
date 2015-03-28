@@ -1,0 +1,3 @@
+[pcapr](http://www.pcapr.net/), powered by [Mu Dynamics](http://www.mudynamics.com), is a social nOtworking site. There's a lot to learn about networks and protocols from packet captures. Besides, we think packets need as much Web 2.0 love as your spreadsheets. You can learn more about pcapr in our [forum](http://groups.google.com/group/pcapr-forum) or by following our [tweets](http://twitter.com/pcapr). You can also read our blogs at [Mu Labs](http://labs.mudynamics.com).
+
+<font color='#DD1122'><b>New!</b></font> Check out the Ruby API for [Xtractr](Xtractr.md) and the rdoc [documentation](http://pcapr.googlecode.com/svn/trunk/xtractr/doc/index.html)!
